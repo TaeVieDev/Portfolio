@@ -1,0 +1,19 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  padding-top: 5rem;
+  position: relative;
+  padding: 5rem 4rem 1rem;
+}

@@ -1,0 +1,84 @@
+.category {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.category h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+.category h3::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: var(--text-secondary);
+}
+
+.competences_section .skills {
+  max-width: 1200px;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skill-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card i {
+  font-size: 3.5rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-card .custom-tech-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover i,
+.skill-card:hover .custom-tech-icon {
+  transform: scale(1.1);
+}
+
+.skill-card p {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+p {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+  margin: 0;
+}

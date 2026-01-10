@@ -1,0 +1,108 @@
+.contact_container {
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  font-size: larger;
+}
+
+.section_title h2 {
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+p {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+  margin: 0;
+}
+
+.contact-form-wrapper {
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form-wrapper:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form {
+  width: 100%;
+}
+
+.form-label {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--text-secondary);
+  box-shadow: 0 0 0 3px rgba(199, 183, 163, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(199, 183, 163, 0.2), rgba(199, 183, 163, 0.1));
+  border: 1px solid var(--text-secondary);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-submit:hover {
+  background: linear-gradient(135deg, rgba(199, 183, 163, 0.3), rgba(199, 183, 163, 0.15));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(199, 183, 163, 0.3);
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}

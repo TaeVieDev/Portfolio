@@ -1,0 +1,105 @@
+.bts_sio_container {
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  font-size: larger;
+}
+
+.section_title h2 {
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+p {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+  margin: 0;
+}
+
+.option-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.option-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slam-card {
+  border: 2px solid rgba(255, 107, 107, 0.3);
+}
+
+.slam-card:hover {
+  border-color: var(--text-secondary);
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+.option-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.slam-badge {
+  background: rgba(255, 107, 107, 0.15);
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+.option-card:hover .option-badge {
+  transform: scale(1.05);
+}
+
+.slam-card:hover .slam-badge {
+  background: rgba(255, 107, 107, 0.25);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+}
+
+.option-card h3 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.slam-card:hover h3 {
+  color: var(--text-secondary);
+}
+
+.option-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem !important;
+  font-style: italic;
+  margin-bottom: 1.5rem !important;
+  font-weight: 500;
+}
+
+.option-card p:not(.option-subtitle) {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}

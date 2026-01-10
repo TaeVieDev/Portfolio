@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--spacing-md);
+  padding-top: 2rem;
+  padding-bottom: 0;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+}
+
+footer .footer-social-links {
+  margin-bottom: 0.5rem;
+  font-size: larger;
+}
+
+footer .footer-social-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: large;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+footer .footer-social-links a:hover {
+  color: var(--text-secondary);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+footer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}

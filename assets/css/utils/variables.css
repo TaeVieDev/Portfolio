@@ -1,0 +1,11 @@
+:root {
+  --bg-primary: #561c24;
+  --bg-secondary: #6d2932;
+  --text-primary: #e8d8c4;
+  --text-secondary: #c7b7a3;
+  --accent-color: #000000;
+
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+}

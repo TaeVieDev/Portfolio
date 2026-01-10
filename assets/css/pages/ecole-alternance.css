@@ -1,0 +1,133 @@
+.ecole_alternance_container {
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.section_title h2 {
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+p {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+  margin: 0;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.info-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.coface-card {
+  border: 2px solid rgba(255, 107, 107, 0.3);
+}
+
+.coface-card:hover {
+  border-color: var(--text-secondary);
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+.info-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.coface-badge {
+  background: rgba(255, 107, 107, 0.15);
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+.info-card:hover .info-badge {
+  transform: scale(1.05);
+}
+
+.coface-card:hover .coface-badge {
+  background: rgba(255, 107, 107, 0.25);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+}
+
+.info-card h3 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.coface-card:hover h3 {
+  color: var(--text-secondary);
+}
+
+.info-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem !important;
+  font-style: italic;
+  margin-bottom: 1rem !important;
+  font-weight: 500;
+}
+
+.department-info {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.mini-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.mini-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.mini-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.mini-card h4 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.mini-card p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem !important;
+  line-height: 1.6;
+}

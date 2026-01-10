@@ -1,0 +1,123 @@
+.social_links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.social_links a:hover {
+  color: var(--text-secondary);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.hero_container {
+  padding: 3rem 2rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.hero_container h1 {
+  max-width: 70%;
+  text-align: center;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+}
+
+.flip-card {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 4rem;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 200px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card:hover .flip-card-back {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-front {
+  transform: rotateY(0deg);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front img,
+.flip-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Anciens styles hero_img (gardés pour compatibilité si nécessaire) */
+.hero_img {
+  width: 250px;
+  height: auto;
+  margin-bottom: 4rem;
+  border-radius: 200px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero_img:hover {
+  transform: scale(1.05) rotateY(180deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about_me_container {
+  padding: 4rem 0rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.section_title h2 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+p {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+  margin: 0;
+}
