@@ -33,8 +33,12 @@
 
   <body>
     <div class="position-relative w-100 min-vh-100">
+      <!-- ========== HEADER ========== -->
       <header id="header">
-        <nav class="links" style="--items: 6">
+        <!-- prettier-ignore -->
+        <nav class="links" style="--items: 6"> <!-- Nombre d'éléments pour l'animation CSS -->
+          
+          <!-- Dropdown Home -->
           <div class="dropdown-nav">
             <a href="#" class="dropdown-trigger">Home</a>
             <div class="dropdown-content">
@@ -42,8 +46,12 @@
               <a href="competence.html">Compétences</a>
             </div>
           </div>
+
+          <!-- Liens simples -->
           <a href="bts-sio.html">Le BTS</a>
           <a href="ecole-alternance.html">École et alternance</a>
+
+          <!-- Dropdown Missions et Projets -->
           <div class="dropdown-nav">
             <a href="#" class="dropdown-trigger">Missions et Projets</a>
             <div class="dropdown-content">
@@ -51,23 +59,31 @@
               <a href="projets-E6.html">Projets E6</a>
             </div>
           </div>
+
           <a href="veille-technologique.html">Ma veille technologique</a>
           <a href="contact.html">Contact</a>
+
+          <!-- Ligne animée sous le lien actif -->
           <span class="line"></span>
         </nav>
       </header>
+      <!-- ========== EO HEADER ========== -->
 
+      <!-- ========== BTS SIO SECTION ========== -->
       <section class="bts_sio_section">
         <div class="bts_sio_container">
           <div class="section_title">
             <h2><strong>Le BTS SIO</strong></h2>
           </div>
           <p>
-            Le <strong>BTS Services Informatiques aux Organisations</strong> forme des techniciens
-            supérieurs capables de gérer et développer des solutions informatiques.
+            Le
+            <strong>BTS Services Informatiques aux Organisations</strong>
+            forme des techniciens supérieurs capables de gérer et développer des solutions
+            informatiques.
           </p>
 
           <div class="row g-4 mt-4">
+            <!-- Option SLAM -->
             <div class="col-md-6">
               <div class="option-card slam-card">
                 <div class="option-badge slam-badge">SLAM</div>
@@ -82,6 +98,8 @@
                 </p>
               </div>
             </div>
+
+            <!-- Option SISR -->
             <div class="col-md-6">
               <div class="option-card sisr-card">
                 <div class="option-badge">SISR</div>
@@ -99,7 +117,9 @@
           </div>
         </div>
       </section>
+      <!-- ========== EO BTS SIO SECTION ========== -->
 
+      <!-- ========== FOOTER ========== -->
       <footer>
         <div class="footer">
           <div class="footer-social-links">
@@ -120,9 +140,16 @@
           <p>© 2025 Thomas. All rights reserved.</p>
         </div>
       </footer>
+      <!-- ========== EO FOOTER ========== -->
 
+      <!-- ========== BACKGROUND ========== -->
+      <!-- Arrière-plan décoratif en position fixed -->
+      <!-- Reste visible sur toute la page pendant le scroll -->
       <div class="background">
+        <!-- Container des particules animées -->
         <div class="particles">
+          <!-- Grille de 11 carrés qui flottent avec des animations CSS -->
+          <!-- Chaque .square a sa propre animation -->
           <div class="squares">
             <div class="square"></div>
             <div class="square"></div>
@@ -137,8 +164,11 @@
             <div class="square"></div>
           </div>
         </div>
+
+        <!-- Fond uni derrière les particules -->
         <div class="back"></div>
       </div>
+      <!-- ========== EO BACKGROUND ========== -->
 
       <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <script src="../assets/js/main.js"></script>

@@ -30,8 +30,11 @@
   </head>
   <body>
     <div class="position-relative w-100 min-vh-100">
+      <!-- ========== HEADER ========== -->
       <header id="header">
-        <nav class="links" style="--items: 6">
+        <!-- prettier-ignore -->
+        <nav class="links" style="--items: 6"> <!-- Nombre d'éléments pour l'animation CSS -->
+          <!-- Dropdown Home -->
           <div class="dropdown-nav">
             <a href="#" class="dropdown-trigger">Home</a>
             <div class="dropdown-content">
@@ -39,8 +42,10 @@
               <a href="competence.html">Compétences</a>
             </div>
           </div>
+          <!-- Liens simples -->
           <a href="bts-sio.html">Le BTS</a>
           <a href="ecole-alternance.html">École et alternance</a>
+          <!-- Dropdown Missions et Projets -->
           <div class="dropdown-nav">
             <a href="#" class="dropdown-trigger">Missions et Projets</a>
             <div class="dropdown-content">
@@ -50,10 +55,13 @@
           </div>
           <a href="veille-technologique.html">Ma veille technologique</a>
           <a href="contact.html">Contact</a>
+          <!-- Ligne animée sous le lien actif -->
           <span class="line"></span>
         </nav>
       </header>
+      <!-- ========== EO HEADER ========== -->
 
+      <!-- ========== ECOLE ALTERNANCE SECTION ========== -->
       <section class="ecole_alternance_section">
         <div class="ecole_alternance_container">
           <div class="section_title">
@@ -61,7 +69,9 @@
             <p>Mon parcours de formation et mon expérience professionnelle</p>
           </div>
 
-          <div class="row g-4 mt-4">
+          <!-- prettier-ignore -->
+          <div class="row g-4 mt-4"> <!-- Grille Bootstrap pour la mise en page -->
+            <!-- ECOLE -->
             <div class="col-md-12">
               <div class="info-card ynov-card">
                 <div class="info-badge">MON ÉCOLE</div>
@@ -71,13 +81,16 @@
                   Institution dédiée à la formation dans les domaines du numérique et de
                   l'innovation. Le campus offre des programmes allant du Bachelor au Mastère dans
                   des secteurs variés tels que l'informatique, le digital marketing et la création
-                  3D. Le campus se distingue par son <strong>approche pratique</strong>,
-                  encourageant les projets réels et les collaborations avec les entreprises pour
+                  3D. Le campus se distingue par son
+                  <strong>approche pratique</strong>
+                  , encourageant les projets réels et les collaborations avec les entreprises pour
                   préparer les étudiants à des carrières réussies.
                 </p>
               </div>
             </div>
+            <!-- EO ECOLE -->
 
+            <!-- ALTERNANCE -->
             <div class="col-md-12">
               <div class="info-card coface-card">
                 <div class="info-badge coface-badge">MON ALTERNANCE</div>
@@ -86,7 +99,8 @@
                   Compagnie Française d'Assurance pour le Commerce Extérieur
                 </p>
                 <p class="department-info">
-                  <strong>Département :</strong> Global Service Desk / Business Technology
+                  <strong>Département :</strong>
+                  Global Service Desk / Business Technology
                 </p>
 
                 <div class="row g-3 mt-3">
@@ -94,11 +108,14 @@
                     <div class="mini-card">
                       <h4>Contexte IT</h4>
                       <p>
-                        <strong>Coface</strong>, leader de l'assurance-crédit, protège les
-                        entreprises contre le risque d'impayé. Au sein du département Business
-                        Technology, je contribue à maintenir une infrastructure critique avec une
-                        <strong>disponibilité maximale</strong> et un
-                        <strong>niveau de sécurité élevé</strong>.
+                        <strong>Coface</strong>
+                        , leader de l'assurance-crédit, protège les entreprises contre le risque
+                        d'impayé. Au sein du département Business Technology, je contribue à
+                        maintenir une infrastructure critique avec une
+                        <strong>disponibilité maximale</strong>
+                        et un
+                        <strong>niveau de sécurité élevé</strong>
+                        .
                       </p>
                     </div>
                   </div>
@@ -107,10 +124,10 @@
                     <div class="mini-card">
                       <h4>Application Support</h4>
                       <p>
-                        <strong>Maintenance et support :</strong> J'assure la continuité
-                        opérationnelle des applications métiers utilisées par les collaborateurs du
-                        groupe à travers le monde. Je traite les incidents techniques pour minimiser
-                        l'impact sur l'activité business.
+                        <strong>Maintenance et support :</strong>
+                        J'assure la continuité opérationnelle des applications métiers utilisées par
+                        les collaborateurs du groupe à travers le monde. Je traite les incidents
+                        techniques pour minimiser l'impact sur l'activité business.
                       </p>
                     </div>
                   </div>
@@ -119,19 +136,23 @@
                     <div class="mini-card">
                       <h4>Identity & Access</h4>
                       <p>
-                        <strong>Sécurisation IAM :</strong> Je pilote le cycle de vie des identités
-                        numériques (création, modification, révocation) et contrôle les privilèges
-                        pour prévenir les fuites de données et les cybermenaces.
+                        <strong>Sécurisation IAM :</strong>
+                        Je pilote le cycle de vie des identités numériques (création, modification,
+                        révocation) et contrôle les privilèges pour prévenir les fuites de données
+                        et les cybermenaces.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- EO ALTERNANCE -->
           </div>
         </div>
       </section>
+      <!-- ========== EO ECOLE ALTERNANCE SECTION ========== -->
 
+      <!-- ========== FOOTER ========== -->
       <footer>
         <div class="footer">
           <div class="footer-social-links">
@@ -152,9 +173,16 @@
           <p>© 2025 Thomas. All rights reserved.</p>
         </div>
       </footer>
+      <!-- ========== EO FOOTER ========== -->
 
+      <!-- ========== BACKGROUND ========== -->
+      <!-- Arrière-plan décoratif en position fixed -->
+      <!-- Reste visible sur toute la page pendant le scroll -->
       <div class="background">
+        <!-- Container des particules animées -->
         <div class="particles">
+          <!-- Grille de 11 carrés qui flottent avec des animations CSS -->
+          <!-- Chaque .square a sa propre animation -->
           <div class="squares">
             <div class="square"></div>
             <div class="square"></div>
@@ -169,8 +197,10 @@
             <div class="square"></div>
           </div>
         </div>
+        <!-- Fond uni derrière les particules -->
         <div class="back"></div>
       </div>
+      <!-- ========== EO BACKGROUND ========== -->
 
       <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <script src="../assets/js/main.js"></script>
