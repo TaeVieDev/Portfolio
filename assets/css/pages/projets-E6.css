@@ -1,15 +1,23 @@
+/* ========================================
+   PROJETS E6 - Page des projets
+   ======================================== */
+
+/* ========== CONTENEUR PRINCIPAL ========== */
+/* Note: Réutilise .missions_E5_container pour cohérence */
 .missions_E5_container {
   padding: 4rem 2rem;
   color: var(--text-secondary);
   font-size: larger;
 }
 
+/* ========== TITRE DE SECTION ========== */
 .section_title h2 {
   margin-bottom: 2rem;
   letter-spacing: 1px;
   word-spacing: 1px;
 }
 
+/* ========== PARAGRAPHES ========== */
 p {
   font-size: 1.4rem;
   letter-spacing: 1px;
@@ -18,6 +26,8 @@ p {
   margin: 0;
 }
 
+/* ========== CARTES DE PROJET ========== */
+/* Note: Réutilise les classes .card-E5 pour cohérence avec missions */
 .card-E5 {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -30,12 +40,15 @@ p {
   position: relative;
 }
 
+/* Effet hover sur les cartes */
 .card-E5:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== BADGE DE PROJET ========== */
+/* Bandeau en haut de la carte (ex: "Projet 1") */
 .mission-badge {
   width: 100%;
   text-align: center;
@@ -50,6 +63,7 @@ p {
   padding-top: 5px;
 }
 
+/* ========== IMAGE DE LA CARTE ========== */
 .card-E5-img {
   width: 100%;
   height: 200px;
@@ -57,6 +71,7 @@ p {
   border-radius: 12px 12px 0 0;
 }
 
+/* ========== CORPS DE LA CARTE ========== */
 .card-E5-body {
   padding: 1.5rem;
   display: flex;
@@ -64,6 +79,7 @@ p {
   flex-grow: 1;
 }
 
+/* Titre du projet */
 .card-E5-title {
   color: var(--text-primary);
   font-size: 1.4rem;
@@ -72,14 +88,17 @@ p {
   letter-spacing: 1px;
 }
 
+/* Description du projet */
 .card-E5-text {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1rem !important;
   line-height: 1.6;
   margin-bottom: 1rem !important;
-  flex-grow: 1;
+  flex-grow: 1; /* Pousse les boutons vers le bas */
 }
 
+/* ========== ICÔNES DES TECHNOLOGIES ========== */
+/* Conteneur des icônes */
 .card-E5-icons {
   display: flex;
   flex-wrap: wrap;
@@ -88,6 +107,7 @@ p {
   margin-bottom: 1rem;
 }
 
+/* Groupe icône + nom */
 .tech-icon {
   display: flex;
   flex-direction: column;
@@ -95,11 +115,13 @@ p {
   gap: 0.5rem;
 }
 
+/* Icônes FontAwesome/Devicon */
 .tech-icon i {
   font-size: 1.8rem;
   transition: transform 0.3s ease;
 }
 
+/* Icônes personnalisées (images) */
 .tech-icon .custom-tech-icon {
   width: 1.8rem;
   height: 1.8rem;
@@ -107,6 +129,7 @@ p {
   transition: transform 0.3s ease;
 }
 
+/* Nom de la technologie */
 .tech-icon p {
   color: var(--text-primary);
   font-size: 0.9rem;
@@ -114,17 +137,21 @@ p {
   margin: 0;
 }
 
+/* Agrandissement des icônes au hover de la carte */
 .card-E5:hover .tech-icon i,
 .card-E5:hover .tech-icon .custom-tech-icon {
   transform: scale(1.1);
 }
 
+/* ========== BOUTONS D'ACTION ========== */
+/* Conteneur des boutons */
 .card-actions {
   display: flex;
   gap: 0.8rem;
-  margin-top: auto;
+  margin-top: auto; /* Colle les boutons en bas */
 }
 
+/* Style des boutons */
 .btn-mission {
   flex: 1;
   padding: 0.6rem 1rem;
@@ -139,6 +166,7 @@ p {
   transition: all 0.3s ease;
 }
 
+/* État hover des boutons */
 .btn-mission:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--text-secondary);

@@ -1,20 +1,8 @@
-.social_links a {
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-block;
-  font-size: 2.5rem;
-  margin-top: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
+/* ========================================
+   HOME - Page d'accueil
+   ======================================== */
 
-.social_links a:hover {
-  color: var(--text-secondary);
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
+/* ========== HERO SECTION ========== */
 .hero_container {
   padding: 3rem 2rem;
   color: var(--text-primary);
@@ -25,6 +13,7 @@
   align-items: center;
 }
 
+/* Titre principal du hero */
 .hero_container h1 {
   max-width: 70%;
   text-align: center;
@@ -34,14 +23,17 @@
   line-height: 2;
 }
 
+/* ========== PHOTO FLIP CARD ========== */
+/* Conteneur de la carte qui se retourne au clic */
 .flip-card {
   width: 250px;
   height: 250px;
   margin-bottom: 4rem;
-  perspective: 1000px;
+  perspective: 1000px; /* Effet de profondeur 3D */
   cursor: pointer;
 }
 
+/* Face interne de la carte (contient recto/verso) */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -50,35 +42,41 @@
   transform-style: preserve-3d;
 }
 
+/* Rotation de 180° quand la classe .flipped est ajoutée */
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
+/* Faces avant et arrière */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
+  backface-visibility: hidden; /* Cache la face arrière quand non visible */
   border-radius: 200px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }
 
+/* Effet hover sur la carte */
 .flip-card:hover .flip-card-front,
 .flip-card:hover .flip-card-back {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Face avant - visible par défaut */
 .flip-card-front {
   transform: rotateY(0deg);
 }
 
+/* Face arrière - retournée de 180° */
 .flip-card-back {
   transform: rotateY(180deg);
 }
 
+/* Images dans les faces */
 .flip-card-front img,
 .flip-card-back img {
   width: 100%;
@@ -87,7 +85,8 @@
   display: block;
 }
 
-/* Anciens styles hero_img (gardés pour compatibilité si nécessaire) */
+/* ========== ANCIENNE IMAGE HERO (DÉPRÉCIÉ) ========== */
+/* Gardé pour compatibilité si nécessaire */
 .hero_img {
   width: 250px;
   height: auto;
@@ -101,12 +100,33 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== LIENS SOCIAUX ========== */
+.social_links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* Effet hover sur les icônes sociales */
+.social_links a:hover {
+  color: var(--text-secondary);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+/* ========== SECTION À PROPOS ========== */
 .about_me_container {
   padding: 4rem 0rem;
   color: var(--text-primary);
   font-size: 1rem;
 }
 
+/* ========== TITRE DE SECTION ========== */
 .section_title h2 {
   font-size: 2.5rem;
   color: var(--text-primary);
@@ -114,6 +134,7 @@
   word-spacing: 1px;
 }
 
+/* ========== PARAGRAPHES ========== */
 p {
   font-size: 1.4rem;
   letter-spacing: 1px;

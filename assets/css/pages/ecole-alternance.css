@@ -1,14 +1,21 @@
+/* ========================================
+   ÉCOLE & ALTERNANCE - Page de présentation
+   ======================================== */
+
+/* ========== CONTENEUR PRINCIPAL ========== */
 .ecole_alternance_container {
   padding: 4rem 2rem;
   color: var(--text-secondary);
 }
 
+/* ========== TITRE DE SECTION ========== */
 .section_title h2 {
   margin-bottom: 2rem;
   letter-spacing: 1px;
   word-spacing: 1px;
 }
 
+/* ========== PARAGRAPHES ========== */
 p {
   font-size: 1.4rem;
   letter-spacing: 1px;
@@ -17,6 +24,8 @@ p {
   margin: 0;
 }
 
+/* ========== CARTES D'INFORMATION ========== */
+/* Carte de base (école) */
 .info-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -26,12 +35,15 @@ p {
   margin-bottom: 2rem;
 }
 
+/* Effet hover sur les cartes */
 .info-card:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== CARTE COFACE (ENTREPRISE) ========== */
+/* Style spécifique pour mettre en avant l'entreprise d'alternance */
 .coface-card {
   border: 2px solid rgba(255, 107, 107, 0.3);
 }
@@ -41,6 +53,8 @@ p {
   box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
 }
 
+/* ========== BADGES ========== */
+/* Badge générique */
 .info-badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.1);
@@ -55,12 +69,14 @@ p {
   transition: all 0.3s ease;
 }
 
+/* Badge Coface - couleur spéciale */
 .coface-badge {
   background: rgba(255, 107, 107, 0.15);
   border-color: var(--text-secondary);
   color: var(--text-secondary);
 }
 
+/* Animation du badge au hover de la carte */
 .info-card:hover .info-badge {
   transform: scale(1.05);
 }
@@ -70,6 +86,7 @@ p {
   box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
 }
 
+/* ========== TITRES DES CARTES ========== */
 .info-card h3 {
   color: var(--text-primary);
   font-size: 1.8rem;
@@ -79,10 +96,12 @@ p {
   transition: color 0.3s ease;
 }
 
+/* Changement de couleur du titre Coface au hover */
 .coface-card:hover h3 {
   color: var(--text-secondary);
 }
 
+/* ========== SOUS-TITRES ET INFOS ========== */
 .info-subtitle {
   color: var(--text-secondary);
   font-size: 1.1rem !important;
@@ -91,12 +110,15 @@ p {
   font-weight: 500;
 }
 
+/* Information du département */
 .department-info {
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem !important;
   margin-bottom: 2rem !important;
 }
 
+/* ========== MINI-CARTES (MISSIONS/TÂCHES) ========== */
+/* Petites cartes dans les cartes principales */
 .mini-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -106,18 +128,21 @@ p {
   transition: all 0.3s ease;
 }
 
+/* Effet hover sur les mini-cartes */
 .mini-card:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-3px);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Icône de la mini-carte */
 .mini-card-icon {
   font-size: 2rem;
   margin-bottom: 1rem;
   display: block;
 }
 
+/* Titre de la mini-carte */
 .mini-card h4 {
   color: var(--text-primary);
   font-size: 1.2rem;
@@ -126,6 +151,7 @@ p {
   letter-spacing: 1px;
 }
 
+/* Description de la mini-carte */
 .mini-card p {
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.95rem !important;

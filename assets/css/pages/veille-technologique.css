@@ -1,15 +1,22 @@
+/* ========================================
+   VEILLE TECHNOLOGIQUE - Page de veille
+   ======================================== */
+
+/* ========== CONTENEUR PRINCIPAL ========== */
 .veille_technologique_container {
   padding: 4rem 2rem;
   color: var(--text-secondary);
   font-size: larger;
 }
 
+/* ========== TITRE DE SECTION ========== */
 .section_title h2 {
   margin-bottom: 2rem;
   letter-spacing: 1px;
   word-spacing: 1px;
 }
 
+/* ========== PARAGRAPHES ========== */
 p {
   font-size: 1.4rem;
   letter-spacing: 1px;

@@ -1,8 +1,14 @@
+/* ========================================
+   COMPÉTENCES - Page des compétences
+   ======================================== */
+
+/* ========== CATÉGORIES DE COMPÉTENCES ========== */
 .category {
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
 
+/* Titre de catégorie (Frontend, Backend, etc.) */
 .category h3 {
   color: var(--text-primary);
   font-size: 1.5rem;
@@ -14,6 +20,7 @@
   word-spacing: 1px;
 }
 
+/* Ligne décorative sous le titre */
 .category h3::after {
   content: "";
   position: absolute;
@@ -25,11 +32,13 @@
   background: var(--text-secondary);
 }
 
+/* ========== GRILLE DES COMPÉTENCES ========== */
 .competences_section .skills {
   max-width: 1200px;
   margin-top: 2rem;
 }
 
+/* ========== CARTES DE COMPÉTENCES ========== */
 .skill-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -45,17 +54,21 @@
   gap: 1rem;
 }
 
+/* Effet hover sur les cartes */
 .skill-card:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== ICÔNES DES TECHNOLOGIES ========== */
+/* Icônes FontAwesome/Devicon */
 .skill-card i {
   font-size: 3.5rem;
   transition: transform 0.3s ease;
 }
 
+/* Icônes personnalisées (images) */
 .skill-card .custom-tech-icon {
   width: 3.5rem;
   height: 3.5rem;
@@ -63,11 +76,13 @@
   transition: transform 0.3s ease;
 }
 
+/* Agrandissement des icônes au hover */
 .skill-card:hover i,
 .skill-card:hover .custom-tech-icon {
   transform: scale(1.1);
 }
 
+/* ========== NOM DE LA TECHNOLOGIE ========== */
 .skill-card p {
   color: var(--text-primary);
   font-size: 1rem;
@@ -75,6 +90,7 @@
   margin: 0;
 }
 
+/* ========== PARAGRAPHES ========== */
 p {
   font-size: 1.4rem;
   letter-spacing: 1px;

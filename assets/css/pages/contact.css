@@ -1,15 +1,22 @@
+/* ========================================
+   CONTACT - Page de contact
+   ======================================== */
+
+/* ========== CONTENEUR PRINCIPAL ========== */
 .contact_container {
   padding: 4rem 2rem;
   color: var(--text-secondary);
   font-size: larger;
 }
 
+/* ========== TITRE DE SECTION ========== */
 .section_title h2 {
   margin-bottom: 2rem;
   letter-spacing: 1px;
   word-spacing: 1px;
 }
 
+/* ========== PARAGRAPHES ========== */
 p {
   font-size: 1.4rem;
   letter-spacing: 1px;
@@ -18,6 +25,7 @@ p {
   margin: 0;
 }
 
+/* ========== CONTENEUR DU FORMULAIRE ========== */
 .contact-form-wrapper {
   max-width: 1000px;
   margin: 3rem auto;
@@ -28,6 +36,7 @@ p {
   transition: all 0.3s ease;
 }
 
+/* Effet hover sur le conteneur */
 .contact-form-wrapper:hover {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -37,6 +46,7 @@ p {
   width: 100%;
 }
 
+/* ========== LABELS DES CHAMPS ========== */
 .form-label {
   display: block;
   color: var(--text-primary);
@@ -46,6 +56,7 @@ p {
   letter-spacing: 0.5px;
 }
 
+/* ========== CHAMPS DE SAISIE ========== */
 .form-input,
 .form-textarea {
   width: 100%;
@@ -59,30 +70,35 @@ p {
   transition: all 0.3s ease;
 }
 
+/* État hover des champs */
 .form-input:hover,
 .form-textarea:hover {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+/* État focus des champs */
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--text-secondary);
-  box-shadow: 0 0 0 3px rgba(199, 183, 163, 0.1);
+  box-shadow: 0 0 0 3px rgba(199, 183, 163, 0.1); /* Anneau de focus */
 }
 
+/* Placeholder des champs */
 .form-input::placeholder,
 .form-textarea::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* ========== ZONE DE TEXTE (MESSAGE) ========== */
 .form-textarea {
-  resize: vertical;
+  resize: vertical; /* Redimensionnable verticalement uniquement */
   min-height: 120px;
 }
 
+/* ========== BOUTON D'ENVOI ========== */
 .form-submit {
   width: 100%;
   padding: 1rem 2rem;
@@ -97,12 +113,14 @@ p {
   transition: all 0.3s ease;
 }
 
+/* État hover du bouton */
 .form-submit:hover {
   background: linear-gradient(135deg, rgba(199, 183, 163, 0.3), rgba(199, 183, 163, 0.15));
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(199, 183, 163, 0.3);
 }
 
+/* État active du bouton (clic) */
 .form-submit:active {
   transform: translateY(0);
 }
