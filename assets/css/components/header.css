@@ -1,12 +1,30 @@
+/* ========================================
+   HEADER - Navigation principale
+   ======================================== */
+
+/* ========== CONTENEUR HEADER ========== */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Au-dessus de tout le contenu */
+}
+
+/* ========== BARRE DE NAVIGATION ========== */
 .links {
   background-color: var(--bg-primary);
   background-image: linear-gradient(to bottom, var(--bg-primary), transparent);
   border-bottom: 1px solid var(--bg-primary);
-  box-shadow: 0 0 32px var(--bg-primary);
+  box-shadow: 0 0 32px var(--bg-primary); /* Ombre diffuse */
   font-size: 1.3em;
   font-weight: 300;
-  font-weight: 300;
+  display: grid;
+  grid-template-columns: repeat(var(--items), 1fr); /* Grille dynamique selon --items */
+  position: relative;
 }
+
+/* ========== LIENS DE NAVIGATION ========== */
 .links > a {
   color: var(--text-primary);
   padding: 0.75em;
@@ -14,34 +32,18 @@
   text-decoration: none;
   transition: all 0.5s;
 }
+
 .links > a:hover {
   background: var(--bg-secondary);
   color: var(--text-primary);
 }
-.links > .line {
-  background: var(--text-primary);
-  height: 1px;
-  pointer-events: none;
-}
 
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-.links {
-  display: grid;
-  grid-template-columns: repeat(var(--items), 1fr);
-  position: relative;
-}
-
-/* Menu déroulant */
+/* ========== MENU DÉROULANT (DROPDOWN) ========== */
 .dropdown-nav {
   position: relative;
 }
 
+/* Déclencheur du dropdown */
 .dropdown-trigger {
   color: var(--text-primary);
   padding: 0.75em;
@@ -57,6 +59,7 @@
   color: var(--text-primary);
 }
 
+/* Contenu du dropdown (caché par défaut) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -69,6 +72,7 @@
   border: 1px solid var(--bg-secondary);
 }
 
+/* Liens dans le dropdown */
 .dropdown-content a {
   color: var(--text-primary);
   padding: 0.75em 1em;
@@ -83,10 +87,17 @@
   color: var(--text-primary);
 }
 
+/* Affichage du dropdown quand actif (via JS) */
 .dropdown-nav.active .dropdown-content {
   display: block;
 }
+
+/* ========== LIGNE ANIMÉE SOUS LES LIENS ========== */
+/* Ligne qui suit le hover des liens */
 .links > .line {
+  background: var(--text-primary);
+  height: 1px;
+  pointer-events: none;
   opacity: 0;
   transition: all 0.5s;
   position: absolute;
@@ -95,11 +106,15 @@
   width: var(--width, calc(100% / var(--items)));
   --index: 0;
 }
+
+/* Affiche la ligne au hover */
 .links > a:hover ~ .line,
 .links > .dropdown-nav:hover ~ .line {
   opacity: 1;
 }
 
+/* ========== POSITIONS DE LA LIGNE PAR ÉLÉMENT ========== */
+/* Calcul de la position selon l'index de l'élément survolé */
 .links > .dropdown-nav:nth-of-type(1):hover ~ .line {
   --index: 1;
 }
