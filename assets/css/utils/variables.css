@@ -1,11 +1,17 @@
-:root {
-  --bg-primary: #561c24;
-  --bg-secondary: #6d2932;
-  --text-primary: #e8d8c4;
-  --text-secondary: #c7b7a3;
-  --accent-color: #000000;
+/* ========================================
+   VARIABLES CSS - Design tokens globaux
+   ======================================== */
 
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
+:root {
+  /* ========== COULEURS ========== */
+  --bg-primary: #561c24; /* Fond principal - bordeaux foncé */
+  --bg-secondary: #6d2932; /* Fond secondaire - bordeaux clair */
+  --text-primary: #e8d8c4; /* Texte principal - beige clair */
+  --text-secondary: #c7b7a3; /* Texte secondaire - beige foncé */
+  --accent-color: #000000; /* Couleur d'accentuation */
+
+  /* ========== ESPACEMENTS ========== */
+  --spacing-sm: 1rem; /* Petit espacement */
+  --spacing-md: 1.5rem; /* Espacement moyen */
+  --spacing-lg: 2rem; /* Grand espacement */
 }
