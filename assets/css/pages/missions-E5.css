@@ -22,6 +22,17 @@ p {
   margin: 0;
 }
 
+/* ========== SOUS-TITRES DE CATÉGORIE ========== */
+.subsection_title {
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* ========== CARTES DE MISSION ========== */
 .card-E5 {
   background: rgba(255, 255, 255, 0.05);

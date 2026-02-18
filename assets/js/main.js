@@ -1,5 +1,3 @@
-/* Main JavaScript */
-
 // Initialisation au chargement du DOM
 document.addEventListener("DOMContentLoaded", () => {
   // Toujours commencer en haut de la page au chargement

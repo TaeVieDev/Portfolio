@@ -148,6 +148,12 @@ p {
 .department-info {
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem !important;
+  /* margin-bottom: 2rem !important; */
+}
+
+.poste-info {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem !important;
   margin-bottom: 2rem !important;
 }
 
