@@ -33,7 +33,7 @@ footer .footer-social-links a {
 }
 
 footer .footer-social-links a:hover {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   cursor: pointer;
   transform: scale(1.2);
 }

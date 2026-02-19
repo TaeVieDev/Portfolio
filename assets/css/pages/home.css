@@ -277,29 +277,19 @@
 }
 
 /* ========== TITRE DE SECTION ========== */
-.section_title h2 {
+/* font-size et color spécifiques à la page home */
+.about_me_section .section_title h2 {
   font-size: 2.5rem;
   color: var(--text-primary);
-  letter-spacing: 1px;
-  word-spacing: 1px;
-}
-
-/* ========== PARAGRAPHES ========== */
-p {
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-  line-height: 2;
-  margin: 0;
 }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-  .section_title h2 {
+  .about_me_section .section_title h2 {
     font-size: 1.8rem;
   }
 
-  p {
+  .about_me_section p {
     font-size: 1.1rem;
     line-height: 1.7;
   }
@@ -325,11 +315,11 @@ p {
 }
 
 @media (max-width: 480px) {
-  .section_title h2 {
+  .about_me_section .section_title h2 {
     font-size: 1.5rem;
   }
 
-  p {
+  .about_me_section p {
     font-size: 1rem;
   }
 

@@ -2,6 +2,11 @@
    COMPÉTENCES - Page des compétences
    ======================================== */
 
+.competences_container {
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
 /* ========== CATÉGORIES DE COMPÉTENCES ========== */
 .category {
   margin-bottom: 3rem;
@@ -90,11 +95,4 @@
   margin: 0;
 }
 
-/* ========== PARAGRAPHES ========== */
-p {
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-  line-height: 2;
-  margin: 0;
-}
+/* Pas de p{} global - déjà dans reset.css */

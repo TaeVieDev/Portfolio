@@ -8,20 +8,6 @@
   font-size: larger;
 }
 
-.section_title h2 {
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-}
-
-p {
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-  line-height: 2;
-  margin: 0;
-}
-
 /* ========== CARTES D'OPTIONS (SLAM/SISR) ========== */
 .option-card {
   background: rgba(255, 255, 255, 0.05);
@@ -47,6 +33,15 @@ p {
 .slam-card:hover {
   border-color: var(--text-secondary);
   box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+/* ========== CARTE SISR ========== */
+.sisr-card {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sisr-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* ========== BADGES D'OPTIONS ========== */
@@ -107,7 +102,7 @@ p {
   line-height: 1.8;
 }
 
-h3 {
+.bts_sio_section h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
   letter-spacing: 1px;

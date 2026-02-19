@@ -8,20 +8,6 @@
   font-size: larger;
 }
 
-.section_title h2 {
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-}
-
-p {
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-  line-height: 2;
-  margin: 0;
-}
-
 /* ========== FORMULAIRE DE CONTACT ========== */
 .contact-form-wrapper {
   max-width: 1000px;

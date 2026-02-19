@@ -17,7 +17,22 @@ body {
   font-family: "Josefin Sans", sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
-  padding-top: 5rem;
   position: relative;
   padding: 5rem 4rem 1rem;
+}
+
+/* ========== TYPOGRAPHIE GLOBALE ========== */
+/* Styles partagés par toutes les pages */
+p {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  line-height: 2;
+  margin: 0;
+}
+
+.section_title h2 {
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  word-spacing: 1px;
 }

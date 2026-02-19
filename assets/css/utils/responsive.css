@@ -20,7 +20,7 @@
     font-size: 1.2rem;
   }
 
-  h3,
+  .bts_sio_section h3,
   .info-card h3,
   .option-card h3 {
     font-size: 1.5rem;
@@ -63,7 +63,7 @@
     line-height: 1.6;
   }
 
-  h3,
+  .bts_sio_section h3,
   .info-card h3,
   .option-card h3 {
     font-size: 1.3rem;
@@ -108,12 +108,16 @@
     font-size: 0.85rem;
   }
 
-  .row {
+  .bts_sio_section .row,
+  .missions_E5_section .row,
+  .ecole_alternance_section .row {
     margin-left: 0;
     margin-right: 0;
   }
 
-  .row > * {
+  .bts_sio_section .row > *,
+  .missions_E5_section .row > *,
+  .ecole_alternance_section .row > * {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
   }
@@ -207,7 +211,7 @@
     font-size: 0.9rem;
   }
 
-  h3,
+  .bts_sio_section h3,
   .info-card h3,
   .option-card h3 {
     font-size: 1.15rem;
@@ -270,8 +274,7 @@
     max-height: 120px !important;
   }
 
-  .card-E5 img,
-  .option-card img {
+  .card-E5 img {
     max-height: 150px;
   }
 
