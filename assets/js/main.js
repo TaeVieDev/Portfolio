@@ -1,3 +1,11 @@
+// Pages temporairement masquées — redirection si accès direct
+const hiddenPages = ["projets-E6.html", "veille-technologique.html"];
+const currentPage = window.location.pathname.split("/").pop();
+if (hiddenPages.includes(currentPage)) {
+  // Redirige vers l'accueil (fonctionne depuis /pages/)
+  window.location.replace("../index.html");
+}
+
 // Initialisation au chargement du DOM
 document.addEventListener("DOMContentLoaded", () => {
   // Toujours commencer en haut de la page au chargement
@@ -10,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDropdown();
   initFlipCard();
   initMobileMenu();
+  initContactForm();
 });
 
 function initDropdown() {
@@ -98,6 +107,18 @@ function initMobileMenu() {
         icon.classList.remove("fa-times");
         icon.classList.add("fa-bars");
       });
+    });
+  }
+}
+
+function initContactForm() {
+  const form = document.querySelector(".contact-form");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // TODO: Connecter à un service d'envoi (Formspree, EmailJS, backend...)
+      alert("Merci pour votre message ! (Fonctionnalité en cours de développement)");
+      form.reset();
     });
   }
 }
