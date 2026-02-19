@@ -14,7 +14,6 @@
 /* Composants réutilisables sur toutes les pages */
 @import "./components/header.css";
 @import "./components/footer.css";
-@import "./components/cards.css";
 @import "./components/buttons.css";
 @import "./components/background.css";
 
