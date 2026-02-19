@@ -274,4 +274,8 @@
   .option-card img {
     max-height: 150px;
   }
+
+  .footer p {
+    font-size: 0.6rem;
+  }
 }
