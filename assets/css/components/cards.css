@@ -37,13 +37,12 @@
   padding-top: 5px;
 }
 
-/* Variantes de badges */
-.atel-badge {
+/* Variantes de badges .atel-badge {
   background: rgba(100, 180, 255, 0.15);
   border-color: rgba(100, 180, 255, 0.3);
-}
+} */
 
-.atelier-badge {
+/* .atelier-badge {
   background: rgba(100, 180, 255, 0.15);
   border-color: rgba(100, 180, 255, 0.3);
 }
@@ -56,7 +55,7 @@
 .school-badge {
   background: rgba(255, 200, 100, 0.15);
   border-color: rgba(255, 200, 100, 0.3);
-}
+} */
 
 /* ========== IMAGE DE LA CARTE ========== */
 .card-E5-img {
