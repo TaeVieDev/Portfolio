@@ -33,6 +33,7 @@ yarn-error.log*
 *.tmp
 *.bak
 *.cache
+*.tsbuildinfo
 
 # Fichiers de test (si vous en ajoutez)
 coverage/
