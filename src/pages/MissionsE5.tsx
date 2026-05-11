@@ -1,9 +1,16 @@
+// Page Missions E5. Bon exemple de séparation données / rendu :
+// - Tableaux de MissionCard tout en haut → facile à éditer/ajouter
+// - Un sous-composant Card qui sait rendre UNE carte
+// - La page principale qui mappe les tableaux et délègue à Card
+
 type TechIcon = {
   label: string;
-  icon?: string;
+  icon?: string; // "?" = optionnel : soit icon, soit customIcon, mais pas obligé d'avoir les deux
   customIcon?: string;
 };
 
+// Type pour une carte de projet. Permet d'avoir l'auto-complétion + erreur TS si je
+// rate un champ. Le "?" sur badgeClass dit que c'est optionnel.
 type MissionCard = {
   title: string;
   description: string;
@@ -104,6 +111,9 @@ const personnels: MissionCard[] = [
   },
 ];
 
+// Sous-composant Card : reçoit un MissionCard via prop "mission".
+// Le ?? (nullish coalescing) : si badgeClass est null/undefined, on retourne "".
+// Différent de || qui se déclencherait aussi pour "", 0, false…
 function Card({ mission }: { mission: MissionCard }) {
   return (
     <div className="card-E5">
@@ -157,6 +167,7 @@ export default function MissionsE5() {
           ))}
         </div>
 
+        {/* Section "Projets en entreprise" : grille vide pour l'instant, à remplir plus tard */}
         <h3 className="subsection_title">Projets en entreprise</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8" />
 

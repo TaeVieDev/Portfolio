@@ -1,8 +1,13 @@
+// Composant fonctionnel le plus simple : pas d'état, pas d'effet,
+// juste du JSX qui prend zéro prop. C'est ce qu'on appelle un composant "présentationnel".
 export default function Footer() {
   return (
     <footer>
       <div className="footer">
         <div className="footer-social-links">
+          {/* target="_blank" + rel="noopener noreferrer" est OBLIGATOIRE pour la sécurité :
+              sans noopener, la page ouverte pourrait accéder à window.opener et rediriger
+              celle d'origine. */}
           <a href="https://github.com/thomas-montout" target="_blank" rel="noopener noreferrer">
             <i className="fa-brands fa-square-github" />
           </a>

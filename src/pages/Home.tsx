@@ -1,11 +1,17 @@
 import FlipCard from "../components/FlipCard";
 
+// Page d'accueil. Composée de deux sections : Hero + About.
+// Le React Fragment <>…</> permet de retourner plusieurs éléments sans wrapper
+// inutile dans le DOM (sinon il faudrait une <div> parente).
 export default function Home() {
   return (
     <>
       {/* ========== HERO ========== */}
       <section className="hero_section">
         <div className="hero_container">
+          {/* Le composant FlipCard reçoit ses images en props : il est totalement
+              indépendant. Si demain je veux le réutiliser ailleurs, je change juste
+              les props. */}
           <FlipCard
             frontSrc="/img/photos/herophoto2.jpg"
             frontAlt="Photo de profil - Recto"
@@ -13,6 +19,8 @@ export default function Home() {
             backAlt="Photo de profil - Verso"
           />
 
+          {/* En JSX, le texte entre balises est libre. Les espaces autour des <strong>
+              doivent souvent être ajoutés avec {" "} sinon ils sont mangés par le parser. */}
           <h1>
             Je m'appelle Thomas et j'étudie le développement de{" "}
             <strong>solutions logicielles et</strong>{" "}
@@ -41,7 +49,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== ABOUT ME ========== */}
+      {/* id="about" → cible pour l'ancre #about depuis la nav.
+          ScrollToTop le détecte et scrolle dessus. */}
       <section className="about_me_section" id="about">
         <div className="about_me_container">
           <div className="section_title">
@@ -145,6 +154,8 @@ export default function Home() {
           </div>
 
           <div className="cv-download">
+            {/* L'attribut "download" force le téléchargement plutôt que l'ouverture en onglet.
+                Le chemin commence par / car le fichier est dans /public (servi à la racine). */}
             <a href="/pdf/CV-Montout Thomas.pdf" className="btn-cv" download>
               <i className="fa-solid fa-download" />
               Télécharger mon CV

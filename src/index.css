@@ -1,3 +1,18 @@
+/* NOTES À RETENIR — Tailwind v4 et CSS moderne :
+   - @import "tailwindcss"  → en v4, UN SEUL import remplace les anciens
+     @tailwind base/components/utilities de la v3.
+   - @theme { … }           → c'est ICI qu'on définit les tokens (couleurs, polices…).
+     Plus de tailwind.config.js : la config vit dans le CSS.
+     Les noms suivent une convention : --color-*, --font-*, --spacing-*
+     → ils génèrent automatiquement les classes utilitaires (bg-bg-primary, etc.).
+   - var(--color-...)       → accessible aussi en CSS classique pour les styles custom.
+   - color-mix(in srgb, X 60%, transparent)
+     → fonction CSS moderne pour mixer deux couleurs sans préprocesseur, top
+     pour faire un alpha sur une variable.
+   - @media (max-width: ...) → toujours possible, et les préfixes Tailwind (sm:, md:…)
+     restent dispo en JSX pour les utilitaires.
+*/
+
 @import "tailwindcss";
 
 /* ========== TOKENS DU THÈME ========== */

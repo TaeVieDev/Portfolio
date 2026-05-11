@@ -1,3 +1,6 @@
+// Page Le BTS : deux cartes côte à côte (SLAM / SISR) qui passent en colonne sur mobile.
+// La grille est en Tailwind : grid-cols-1 par défaut, md:grid-cols-2 à partir de 768px.
+// md: est un préfixe responsive Tailwind, équivalent à @media (min-width: 768px).
 export default function BtsSio() {
   return (
     <section className="bts_sio_section">

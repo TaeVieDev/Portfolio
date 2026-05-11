@@ -1,3 +1,8 @@
+// Page École & Alternance.
+// À RETENIR pour le JSX :
+// - Les attributs HTML deviennent camelCase : autoplay → autoPlay, playsinline → playsInline.
+// - "class" est un mot-clé JS → en JSX on écrit "className".
+// - Les booléens d'attribut HTML (autoplay="autoplay") sont juste écrits sans valeur en JSX.
 export default function EcoleAlternance() {
   return (
     <section className="ecole_alternance_section">
@@ -31,6 +36,9 @@ export default function EcoleAlternance() {
 
           {/* ALTERNANCE */}
           <div className="info-card coface-card">
+            {/* Vidéo en boucle muette : autoPlay/loop/muted/playsInline sont des booléens JSX.
+                playsInline est crucial sur iOS (sinon la vidéo passe en fullscreen).
+                muted est indispensable pour que autoPlay fonctionne sur la plupart des navigateurs. */}
             <video className="coface-video" autoPlay loop muted playsInline>
               <source src="/media/videos/coface.mp4" type="video/mp4" />
               Votre navigateur ne supporte pas les vidéos HTML5.

@@ -1,3 +1,6 @@
+// Page Projets E6 : actuellement masquée de la navigation mais accessible par URL.
+// Quand j'aurai plus de projets E6, je passerai ça dans le même pattern que MissionsE5
+// (tableau de données + sous-composant Card).
 export default function ProjetsE6() {
   return (
     <section className="missions_E5_section">

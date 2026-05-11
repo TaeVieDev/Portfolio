@@ -1,3 +1,5 @@
+// Page Veille techno. Données séparées du JSX : pratique pour ajouter une carte,
+// je n'ai qu'à pousser un objet dans le tableau, pas à toucher le rendu.
 const veilles = [
   {
     title: "Rust",
@@ -28,6 +30,8 @@ export default function VeilleTechnologique() {
           <p>Les nouveaux langages de programmation et technologies émergentes que je surveille.</p>
         </div>
         <div className="veille_technologique_cards">
+          {/* Le mapping bonne pratique : on tape sur une donnée stable et unique (title)
+              pour la key, plutôt que sur l'index qui peut changer si on réordonne. */}
           {veilles.map((v) => (
             <div key={v.title} className="veille_technologique_card">
               <h3>{v.title}</h3>
