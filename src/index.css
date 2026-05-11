@@ -105,7 +105,10 @@ p {
   }
 }
 
-/* ========== BACKGROUND ANIMÉ ========== */
+/* ========== BACKGROUND ==========
+   Deux couches superposées sur un fond fixe :
+   1. Une grille de dots faits avec un radial-gradient répété
+   2. Un halo qui suit le curseur (positionné via --cursor-x/y mis à jour en JS) */
 .bg-decor {
   position: fixed;
   inset: 0;
@@ -114,125 +117,35 @@ p {
   pointer-events: none;
 }
 
-.bg-decor::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60vh;
-  background-image: linear-gradient(-180deg, var(--color-bg-primary) 0%, rgba(86, 28, 36, 0) 100%);
-  z-index: 1;
-}
-
-.bg-decor::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20vh;
-  background-image: linear-gradient(0deg, var(--color-bg-primary) 0%, rgba(86, 28, 36, 0) 100%);
-  z-index: 1;
-}
-
-.bg-decor .back {
+/* Grille de dots : radial-gradient minuscule, répété en tile.
+   Astuce : background-size définit la taille de chaque tile (24x24 px),
+   donc on aperçoit un point tous les 24 pixels. */
+.bg-decor__dots {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  background-image: radial-gradient(
+    circle,
+    rgba(232, 216, 196, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  /* Léger masque pour adoucir les bords et focaliser le motif au centre */
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
 }
 
-.bg-decor .particles {
+/* Halo curseur : un seul radial-gradient géant centré sur le curseur.
+   On utilise des valeurs par défaut (50%) pour que ce soit visible avant
+   le premier mousemove. */
+.bg-decor__glow {
   position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.bg-decor .squares {
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  overflow: hidden;
-}
-
-.bg-decor .square {
-  animation: squares 18s linear infinite;
-  align-self: flex-end;
-  width: 1em;
-  height: 1em;
-  transform: translateY(100%);
-  background: color-mix(in srgb, var(--color-text-primary) 60%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-text-secondary) 80%, transparent);
-}
-
-.bg-decor .square:nth-child(2) {
-  height: 1.5em;
-  width: 3em;
-  animation-delay: 1s;
-  animation-duration: 30s;
-  filter: blur(5px);
-}
-.bg-decor .square:nth-child(3) {
-  height: 2em;
-  width: 1em;
-  animation-delay: 1.5s;
-  animation-duration: 15s;
-}
-.bg-decor .square:nth-child(4) {
-  height: 1em;
-  width: 1.5em;
-  animation-delay: 0.5s;
-  filter: blur(3px);
-  animation-duration: 24s;
-}
-.bg-decor .square:nth-child(5) {
-  height: 1.25em;
-  width: 2em;
-  animation-delay: 4s;
-  filter: blur(2px);
-  animation-duration: 20s;
-}
-.bg-decor .square:nth-child(6) {
-  height: 2.5em;
-  width: 2em;
-  animation-delay: 2s;
-  filter: blur(1px);
-  animation-duration: 16s;
-}
-.bg-decor .square:nth-child(7) {
-  height: 5em;
-  width: 2em;
-  filter: blur(2.5px);
-  animation-duration: 22s;
-}
-.bg-decor .square:nth-child(8) {
-  height: 1em;
-  width: 3em;
-  animation-delay: 5s;
-  filter: blur(6px);
-  animation-duration: 32s;
-}
-.bg-decor .square:nth-child(9) {
-  height: 1.5em;
-  width: 2em;
-  filter: blur(0.5px);
-  animation-duration: 16s;
-}
-.bg-decor .square:nth-child(10) {
-  height: 3em;
-  width: 2.4em;
-  animation-delay: 6s;
-  filter: blur(0.5px);
-  animation-duration: 22s;
-}
-
-@keyframes squares {
-  from {
-    transform: translateY(100%) rotate(-50deg);
-  }
-  to {
-    transform: translateY(calc(-100vh - 100%)) rotate(20deg);
-  }
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    rgba(232, 216, 196, 0.08),
+    transparent 50%
+  );
+  transition: background 0.05s linear;
 }
 
 /* ========== HEADER / NAV ========== */

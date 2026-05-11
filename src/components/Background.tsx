@@ -1,59 +1,54 @@
 import { useEffect, useRef } from "react";
 
-// Composant d'arrière-plan animé : 11 carrés qui flottent du bas vers le haut.
-// L'animation principale est faite en CSS (keyframes). Ici, le JS sert juste à
-// randomiser la position de départ + le décalage horizontal à chaque cycle.
+// Arrière-plan repensé : on retire les particules au profit de deux effets plus subtils :
+//   1. Une grille de points fine (radial-gradient répété) — texture "techno" discrète
+//   2. Un halo lumineux qui suit le curseur sur TOUTE la page
+//
+// NOTIONS À RETENIR :
+// - Pas de state React → on met à jour des CSS variables (--cursor-x/y) avec
+//   ref.current.style.setProperty(). Aucun rerender → ultra performant.
+// - requestAnimationFrame "throttle" mousemove : on n'écrit dans le DOM
+//   qu'une fois par frame (max 60fps). Sans ça, le navigateur ramerait.
+// - { passive: true } sur l'event = on dit au navigateur "je ne préviendrai pas le scroll",
+//   ce qui lui permet d'optimiser le défilement.
 export default function Background() {
-  // useRef : pointe vers un nœud du DOM. Persiste entre les renders SANS provoquer
-  // de re-render quand on le modifie. Parfait pour accéder à du DOM brut.
-  // Le type <HTMLDivElement> dit à TS que current sera une div (ou null).
-  const containerRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
-  // useEffect : code qui tourne APRÈS le rendu.
-  // Le tableau de dépendances [] (vide) = exécuté une seule fois au montage.
-  // Si on mettait [varX], ça relancerait à chaque changement de varX.
   useEffect(() => {
-    // ? = optional chaining : si containerRef.current est null, retourne undefined
-    // au lieu de planter. Très utile avec les refs au montage.
-    const squares = containerRef.current?.querySelectorAll<HTMLDivElement>(".square");
-    if (!squares) return;
+    let frame = 0;
+    let lastX = 0;
+    let lastY = 0;
 
-    // On garde la liste des handlers pour pouvoir les retirer dans le cleanup.
-    const handlers: Array<{ el: HTMLDivElement; fn: () => void }> = [];
-    squares.forEach((square) => {
-      const startY = Math.random() * 100;
-      square.style.bottom = startY + "vh";
+    const onMove = (e: MouseEvent) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      // Si une frame est déjà planifiée, on ne replanifie pas.
+      // → on n'écrit dans le DOM qu'une fois par rafraîchissement écran.
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        const el = glowRef.current;
+        if (el) {
+          el.style.setProperty("--cursor-x", `${lastX}px`);
+          el.style.setProperty("--cursor-y", `${lastY}px`);
+        }
+        frame = 0;
+      });
+    };
 
-      const onIter = () => {
-        const randomX = (Math.random() - 0.5) * 100;
-        square.style.transform = `translateX(${randomX}px)`;
-      };
-      square.addEventListener("animationiteration", onIter);
-      handlers.push({ el: square, fn: onIter });
-    });
-
-    // Le return d'un useEffect = fonction de CLEANUP, appelée au démontage
-    // (ou avant la prochaine exécution de l'effet). Ici on évite les fuites
-    // mémoire en retirant les listeners.
+    window.addEventListener("mousemove", onMove, { passive: true });
+    // Cleanup : on retire le listener au démontage pour éviter une fuite mémoire.
     return () => {
-      handlers.forEach(({ el, fn }) => el.removeEventListener("animationiteration", fn));
+      window.removeEventListener("mousemove", onMove);
+      if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 
   return (
-    <div className="bg-decor" ref={containerRef}>
-      <div className="particles">
-        <div className="squares">
-          {/* Array.from({length: 11}) crée un tableau de 11 cases vides.
-              .map((_, i) => …) → on ignore la valeur (_) et on utilise l'index.
-              La prop "key" est OBLIGATOIRE quand on rend une liste : elle aide
-              React à savoir quel élément a bougé / a été ajouté / supprimé. */}
-          {Array.from({ length: 11 }).map((_, i) => (
-            <div key={i} className="square" />
-          ))}
-        </div>
-      </div>
-      <div className="back" />
+    <div className="bg-decor" ref={glowRef}>
+      {/* Couche 1 : grille de dots (CSS pur, voir index.css) */}
+      <div className="bg-decor__dots" />
+      {/* Couche 2 : halo curseur (radial-gradient positionné via --cursor-x/y) */}
+      <div className="bg-decor__glow" />
     </div>
   );
 }
