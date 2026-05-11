@@ -1,117 +1,95 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
+// Liste centralisée des items de nav : ajouter une entrée = ajouter ici, pas dans le JSX.
+const navItems = [
+  { id: "hero", label: "Accueil" },
+  { id: "bts", label: "BTS" },
+  { id: "competences", label: "Compétences" },
+  { id: "ecole", label: "École" },
+  { id: "missions", label: "Missions" },
+  { id: "contact", label: "Contact" },
+];
+
+// Header "pill" flottant — style portfolio moderne.
+// - Centré en haut, fond semi-transparent + backdrop-blur (effet verre)
+// - Liens ancres qui scrollent vers les sections de Home
+// - Détection auto de la section active via IntersectionObserver
+//   → le lien actif change tout seul quand on scrolle.
 export default function Header() {
-  // useState : retourne [valeur, setter].
-  // Le type <string | null> dit qu'au démarrage, aucun dropdown n'est ouvert (null).
-  // Quand un dropdown est ouvert, on stocke sa clé ("home" ou "missions").
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  // Booléen pour le menu burger mobile : ouvert / fermé.
+  const [active, setActive] = useState<string>("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  // Ref pour cibler le <nav> si besoin d'y accéder en DOM brut.
-  const navRef = useRef<HTMLElement>(null);
-
-  // useLocation : hook de React Router. Donne l'URL courante.
-  // Utile pour réagir aux changements de route (voir useEffect plus bas).
   const location = useLocation();
+  const navigate = useNavigate();
+  // Les ancres ne sont valides que sur la home : sur une page détail, on doit
+  // d'abord revenir à "/" avant de scroller.
+  const onHome = location.pathname === "/";
 
-  // Ferme les dropdowns quand on clique en dehors.
-  // Le useEffect s'attache UNE FOIS au montage (deps = []) et nettoie au démontage.
+  // IntersectionObserver : observe chaque <section id="..."> et nous prévient
+  // quand elle entre/sort du viewport.
+  // rootMargin "-40% 0px -50% 0px" → la zone active est dans la moitié haute
+  // du viewport, ce qui donne un effet "le lien change un peu avant que la
+  // section atteigne le haut", plus naturel.
   useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      // .closest() remonte la chaîne des parents : si le clic ne vient pas
-      // d'un .dropdown-nav, on ferme tout.
-      if (!(e.target as HTMLElement).closest(".dropdown-nav")) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener("click", onDocClick);
-    return () => document.removeEventListener("click", onDocClick);
-  }, []);
+    if (!onHome) return;
+    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+    if (sections.length === 0) return;
 
-  // Cet useEffect se relance à CHAQUE changement de pathname → on ferme le menu
-  // mobile et les dropdowns quand l'utilisateur navigue.
-  useEffect(() => {
-    setMobileOpen(false);
-    setOpenDropdown(null);
-  }, [location.pathname]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px" },
+    );
+    sections.forEach((s) => observer.observe(s));
+    // Cleanup : déconnecte l'observer au démontage (sinon fuite mémoire).
+    return () => observer.disconnect();
+  }, [onHome]);
 
-  // Toggle : si on clique sur le dropdown déjà ouvert, on le ferme.
-  // Sinon, on l'ouvre (ce qui ferme automatiquement l'autre).
-  const toggleDropdown = (e: React.MouseEvent, key: string) => {
+  // Clic sur un lien : empêche le saut brutal, navigue smooth.
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    e.stopPropagation(); // empêche la propagation au document → sinon le onDocClick juste après refermerait tout
-    setOpenDropdown((prev) => (prev === key ? null : key));
+    setMobileOpen(false);
+
+    // Si on n'est pas sur la home, on y va d'abord. Le useEffect de ScrollToTop
+    // se chargera ensuite de scroller vers l'ancre.
+    if (!onHome) {
+      navigate(`/#${id}`);
+      return;
+    }
+
+    const el = document.getElementById(id);
+    el?.scrollIntoView({ behavior: "smooth" });
+    // Met à jour l'URL sans recharger la page (l'utilisateur peut copier le lien).
+    history.replaceState(null, "", `#${id}`);
   };
 
-  const closeMobile = () => setMobileOpen(false);
-
   return (
-    <header id="header" className="fixed top-0 left-0 right-0 z-1000">
+    <header className="pill-header">
+      {/* Burger mobile : caché sur desktop via CSS */}
       <button
-        className="menu-burger"
+        className="pill-burger"
         aria-label="Menu"
         onClick={() => setMobileOpen((v) => !v)}
       >
-        {/* className conditionnel via template string : on change l'icône selon l'état */}
         <i className={`fa-solid ${mobileOpen ? "fa-times" : "fa-bars"}`} />
       </button>
 
-      <nav
-        ref={navRef}
-        className={`links ${mobileOpen ? "open" : ""}`}
-        // Style inline en JS : doit être un objet { propCSS: valeur }.
-        // Custom properties (--items) → cast en React.CSSProperties pour que TS accepte.
-        style={{ "--items": 5 } as React.CSSProperties}
-      >
-        <div className={`dropdown-nav ${openDropdown === "home" ? "active" : ""}`}>
-          <a href="#" className="dropdown-trigger" onClick={(e) => toggleDropdown(e, "home")}>
-            Home
-          </a>
-          <div className="dropdown-content">
-            {/* <Link> = navigation SPA (pas de reload). À utiliser pour les routes internes. */}
-            <Link to="/" onClick={closeMobile}>
-              Accueil
-            </Link>
-            {/* <a href="#about"> = ancre HTML classique. Le scroll smooth est dans le CSS. */}
-            <a href="#about" onClick={closeMobile}>
-              À propos
-            </a>
-            <Link to="/competence" onClick={closeMobile}>
-              Compétences
-            </Link>
-          </div>
-        </div>
-
-        <Link to="/bts-sio" onClick={closeMobile}>
-          Le BTS
-        </Link>
-        <Link to="/ecole-alternance" onClick={closeMobile}>
-          École et alternance
-        </Link>
-
-        <div className={`dropdown-nav ${openDropdown === "missions" ? "active" : ""}`}>
+      <nav className={`pill-nav ${mobileOpen ? "open" : ""}`}>
+        {navItems.map((item) => (
           <a
-            href="#"
-            className="dropdown-trigger"
-            onClick={(e) => toggleDropdown(e, "missions")}
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={(e) => handleClick(e, item.id)}
+            className={active === item.id ? "active" : ""}
           >
-            Missions et Projets
+            {item.label}
           </a>
-          <div className="dropdown-content">
-            <Link to="/missions-e5" onClick={closeMobile}>
-              Missions E5
-            </Link>
-          </div>
-        </div>
-
-        <Link to="/contact" onClick={closeMobile}>
-          Contact
-        </Link>
-
-        <span className="line" />
+        ))}
       </nav>
     </header>
   );
