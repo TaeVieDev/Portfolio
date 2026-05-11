@@ -828,6 +828,118 @@ footer p {
   }
 }
 
+/* ========== MISSION DETAIL — Page case study ========== */
+.mission-detail {
+  padding: 5rem 1rem 4rem;
+}
+
+.mission-detail__container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mission-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  width: fit-content;
+  transition: color 0.3s ease;
+}
+
+.mission-detail__back:hover {
+  color: var(--color-text-primary);
+}
+
+.mission-detail__hero {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mission-detail__image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.mission-detail__heading {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mission-detail__heading h1 {
+  font-size: 2.2rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.mission-detail__lead {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mission-detail__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.mission-detail__block {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+
+.mission-detail__block h2 {
+  color: var(--color-text-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.mission-detail__block p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.mission-detail__links {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .mission-detail__heading h1 {
+    font-size: 1.5rem;
+  }
+  .mission-detail__image {
+    height: 180px;
+  }
+  .mission-detail__block {
+    padding: 1.25rem;
+  }
+}
+
 /* ========================================
    SPOTLIGHT — Halo lumineux au curseur
    ========================================
