@@ -5,7 +5,7 @@ import { useState } from "react";
 // si je tape status === "loading", TS hurle parce que ce n'est pas dans l'union.
 type Status = "idle" | "sent";
 
-export default function Contact() {
+export default function Contact({ id = "contact" }: { id?: string }) {
   // useState typé via <Status> : l'état est forcément du bon type.
   const [status, setStatus] = useState<Status>("idle");
 
@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="contact_section">
+    <section id={id} className="contact_section">
       <div className="contact_container">
         <div className="section_title">
           <h2>

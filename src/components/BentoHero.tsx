@@ -12,9 +12,9 @@ import FlipCard from "./FlipCard";
 //   "intro intro intro social"
 // Chaque mot = un nom de zone. Les cellules ont juste grid-area: photo,
 // la grille les place automatiquement. Hyper lisible.
-export default function BentoHero() {
+export default function BentoHero({ id = "hero" }: { id?: string }) {
   return (
-    <section className="bento">
+    <section id={id} className="bento">
       {/* Cellule 1 : photo (FlipCard récupéré tel quel) */}
       <div className="bento__cell bento__photo">
         <FlipCard

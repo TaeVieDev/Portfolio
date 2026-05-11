@@ -5,13 +5,13 @@ import { useSpotlight } from "../hooks/useSpotlight";
 // - Les attributs HTML deviennent camelCase : autoplay → autoPlay, playsinline → playsInline.
 // - "class" est un mot-clé JS → en JSX on écrit "className".
 // - Les booléens d'attribut HTML (autoplay="autoplay") sont juste écrits sans valeur en JSX.
-export default function EcoleAlternance() {
+export default function EcoleAlternance({ id = "ecole" }: { id?: string }) {
   // Un hook par carte : chacune a son propre halo lumineux qui suit le curseur.
   const ynov = useSpotlight();
   const coface = useSpotlight();
 
   return (
-    <section className="ecole_alternance_section">
+    <section id={id} className="ecole_alternance_section">
       <div className="ecole_alternance_container">
         <div className="section_title">
           <h2>

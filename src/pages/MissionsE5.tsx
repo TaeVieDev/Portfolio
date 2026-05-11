@@ -47,13 +47,13 @@ function Card({ mission }: { mission: Mission }) {
   );
 }
 
-export default function MissionsE5() {
+export default function MissionsE5({ id = "missions" }: { id?: string }) {
   // Récupération des missions par catégorie via le helper.
   const formation = missionsByCategory("formation");
   const personnels = missionsByCategory("personnel");
 
   return (
-    <section className="missions_E5_section">
+    <section id={id} className="missions_E5_section">
       <div className="missions_E5_container">
         <div className="section_title">
           <h2>

@@ -1,19 +1,24 @@
 import BentoHero from "../components/BentoHero";
+import BtsSio from "./BtsSio";
+import Competence from "./Competence";
+import EcoleAlternance from "./EcoleAlternance";
+import MissionsE5 from "./MissionsE5";
+import Contact from "./Contact";
 
-// Page d'accueil. Composée de deux sections : Bento Hero + About.
-// Le React Fragment <>…</> permet de retourner plusieurs éléments sans wrapper
-// inutile dans le DOM (sinon il faudrait une <div> parente).
+// Home en single-page : toutes les sections du portfolio sont rendues à la suite.
+// Chaque section a un id → le header pill scrolle dessus, et l'IntersectionObserver
+// du header détecte laquelle est visible pour highlighter le lien actif.
+//
+// On réutilise les composants de page existants (BtsSio, Competence, etc.) en tant
+// que sections. Aucune duplication de code : un seul endroit définit chaque section.
 export default function Home() {
   return (
     <>
-      {/* Nouveau hero en bento grid : grille asymétrique multi-cellules.
-          Toute la logique (FlipCard, liens sociaux, intro, stack) est encapsulée
-          dans BentoHero pour garder Home lisible. */}
+      {/* Hero en bento grid (id="hero" par défaut) */}
       <BentoHero />
 
-      {/* id="about" → cible pour l'ancre #about depuis la nav.
-          ScrollToTop le détecte et scrolle dessus. */}
-      <section className="about_me_section" id="about">
+      {/* About : section spécifique à la home, donc inline ici */}
+      <section id="about" className="about_me_section">
         <div className="about_me_container">
           <div className="section_title">
             <h2>
@@ -116,8 +121,6 @@ export default function Home() {
           </div>
 
           <div className="cv-download">
-            {/* L'attribut "download" force le téléchargement plutôt que l'ouverture en onglet.
-                Le chemin commence par / car le fichier est dans /public (servi à la racine). */}
             <a href="/pdf/CV-Montout Thomas.pdf" className="btn-cv" download>
               <i className="fa-solid fa-download" />
               Télécharger mon CV
@@ -125,6 +128,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Les autres sections : composants standalone réutilisés en tant que sections.
+          Chacun a un id par défaut → cohérence avec le header pill. */}
+      <BtsSio />
+      <Competence />
+      <EcoleAlternance />
+      <MissionsE5 />
+      <Contact />
     </>
   );
 }

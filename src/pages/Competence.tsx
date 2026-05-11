@@ -69,9 +69,9 @@ function SkillGrid({ skills }: { skills: Skill[] }) {
   );
 }
 
-export default function Competence() {
+export default function Competence({ id = "competences" }: { id?: string }) {
   return (
-    <section className="competences_section">
+    <section id={id} className="competences_section">
       <div className="competences_container">
         <div className="category">
           <h3>Frontend</h3>

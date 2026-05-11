@@ -1,16 +1,16 @@
 import { useSpotlight } from "../hooks/useSpotlight";
 
-// Page Le BTS : deux cartes côte à côte (SLAM / SISR) qui passent en colonne sur mobile.
-// La grille est en Tailwind : grid-cols-1 par défaut, md:grid-cols-2 à partir de 768px.
-// md: est un préfixe responsive Tailwind, équivalent à @media (min-width: 768px).
-export default function BtsSio() {
+// Section Le BTS : deux cartes côte à côte (SLAM / SISR) qui passent en colonne sur mobile.
+// Le prop "id" (par défaut "bts") sert d'ancre pour le scroll depuis le header pill.
+// Pattern de prop avec valeur par défaut via déstructuration : `{ id = "bts" }`.
+export default function BtsSio({ id = "bts" }: { id?: string }) {
   // Deux appels indépendants au hook : chacun a son propre ref.
   // Hooks appelés au TOP du composant → conforme aux Rules of Hooks.
   const slam = useSpotlight();
   const sisr = useSpotlight();
 
   return (
-    <section className="bts_sio_section">
+    <section id={id} className="bts_sio_section">
       <div className="bts_sio_container">
         <div className="section_title">
           <h2>
