@@ -1,3 +1,5 @@
+import { useSpotlight } from "../hooks/useSpotlight";
+
 // Page Compétences. Idée principale : sortir les données dans des tableaux typés,
 // et laisser le JSX faire UNIQUEMENT du rendu. Beaucoup plus lisible que de copier-coller
 // chaque <div class="skill-card"> à la main.
@@ -35,6 +37,24 @@ const tools: Skill[] = [
   { label: "Windows Server", icon: "devicon-windows8-plain colored" },
 ];
 
+// Sous-composant SkillCard : on isole le rendu d'UNE carte pour pouvoir y appeler
+// useSpotlight (le hook doit être au top d'un composant, pas dans une boucle .map()).
+function SkillCard({ skill }: { skill: Skill }) {
+  const { ref, onMouseMove } = useSpotlight();
+  return (
+    <div ref={ref} onMouseMove={onMouseMove} className="skill-card spotlight">
+      {/* Rendu conditionnel via ternaire : si customIcon existe, on rend une <img>,
+          sinon un <i> avec la classe Devicon. */}
+      {skill.customIcon ? (
+        <img src={skill.customIcon} alt={skill.label} className="custom-tech-icon" />
+      ) : (
+        <i className={skill.icon} />
+      )}
+      <p>{skill.label}</p>
+    </div>
+  );
+}
+
 // Sous-composant local : factorise le rendu de la grille pour ne pas le réécrire 3x.
 // Quand on découpe en petits composants comme ça, on évite la répétition.
 function SkillGrid({ skills }: { skills: Skill[] }) {
@@ -43,16 +63,7 @@ function SkillGrid({ skills }: { skills: Skill[] }) {
       {/* .map() = produit un tableau de JSX à partir d'un tableau de données.
           La key doit être UNIQUE et STABLE → on utilise le label (pas l'index si possible). */}
       {skills.map((s) => (
-        <div key={s.label} className="skill-card">
-          {/* Rendu conditionnel via ternaire : si customIcon existe, on rend une <img>,
-              sinon un <i> avec la classe Devicon. */}
-          {s.customIcon ? (
-            <img src={s.customIcon} alt={s.label} className="custom-tech-icon" />
-          ) : (
-            <i className={s.icon} />
-          )}
-          <p>{s.label}</p>
-        </div>
+        <SkillCard key={s.label} skill={s} />
       ))}
     </div>
   );

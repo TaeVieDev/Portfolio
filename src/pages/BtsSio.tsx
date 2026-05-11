@@ -1,7 +1,14 @@
+import { useSpotlight } from "../hooks/useSpotlight";
+
 // Page Le BTS : deux cartes côte à côte (SLAM / SISR) qui passent en colonne sur mobile.
 // La grille est en Tailwind : grid-cols-1 par défaut, md:grid-cols-2 à partir de 768px.
 // md: est un préfixe responsive Tailwind, équivalent à @media (min-width: 768px).
 export default function BtsSio() {
+  // Deux appels indépendants au hook : chacun a son propre ref.
+  // Hooks appelés au TOP du composant → conforme aux Rules of Hooks.
+  const slam = useSpotlight();
+  const sisr = useSpotlight();
+
   return (
     <section className="bts_sio_section">
       <div className="bts_sio_container">
@@ -16,7 +23,11 @@ export default function BtsSio() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-          <div className="option-card slam-card">
+          <div
+            ref={slam.ref}
+            onMouseMove={slam.onMouseMove}
+            className="option-card slam-card spotlight"
+          >
             <div className="option-badge slam-badge">SLAM</div>
             <h3>Solutions Logicielles</h3>
             <p className="option-subtitle">L'art de concevoir des applications</p>
@@ -39,7 +50,11 @@ export default function BtsSio() {
             </div>
           </div>
 
-          <div className="option-card sisr-card">
+          <div
+            ref={sisr.ref}
+            onMouseMove={sisr.onMouseMove}
+            className="option-card sisr-card spotlight"
+          >
             <div className="option-badge">SISR</div>
             <h3>Solutions d'Infrastructure</h3>
             <p className="option-subtitle">L'architecture et la maîtrise des réseaux</p>

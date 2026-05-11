@@ -1,3 +1,5 @@
+import { useSpotlight } from "../hooks/useSpotlight";
+
 // Page Missions E5. Bon exemple de séparation données / rendu :
 // - Tableaux de MissionCard tout en haut → facile à éditer/ajouter
 // - Un sous-composant Card qui sait rendre UNE carte
@@ -114,9 +116,12 @@ const personnels: MissionCard[] = [
 // Sous-composant Card : reçoit un MissionCard via prop "mission".
 // Le ?? (nullish coalescing) : si badgeClass est null/undefined, on retourne "".
 // Différent de || qui se déclencherait aussi pour "", 0, false…
+// On appelle useSpotlight DANS ce sous-composant : chaque carte aura son propre ref.
+// Si on l'appelait au-dessus dans une boucle .map(), ça casserait les Rules of Hooks.
 function Card({ mission }: { mission: MissionCard }) {
+  const { ref, onMouseMove } = useSpotlight();
   return (
-    <div className="card-E5">
+    <div ref={ref} onMouseMove={onMouseMove} className="card-E5 spotlight">
       <img className="card-E5-img" src={mission.image} alt={mission.title} />
       <div className={`mission-badge ${mission.badgeClass ?? ""}`}>{mission.badge}</div>
       <div className="card-E5-body">

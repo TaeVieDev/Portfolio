@@ -1,9 +1,15 @@
+import { useSpotlight } from "../hooks/useSpotlight";
+
 // Page École & Alternance.
 // À RETENIR pour le JSX :
 // - Les attributs HTML deviennent camelCase : autoplay → autoPlay, playsinline → playsInline.
 // - "class" est un mot-clé JS → en JSX on écrit "className".
 // - Les booléens d'attribut HTML (autoplay="autoplay") sont juste écrits sans valeur en JSX.
 export default function EcoleAlternance() {
+  // Un hook par carte : chacune a son propre halo lumineux qui suit le curseur.
+  const ynov = useSpotlight();
+  const coface = useSpotlight();
+
   return (
     <section className="ecole_alternance_section">
       <div className="ecole_alternance_container">
@@ -16,7 +22,11 @@ export default function EcoleAlternance() {
 
         <div className="grid grid-cols-1 gap-4 mt-8">
           {/* ECOLE */}
-          <div className="info-card ynov-card">
+          <div
+            ref={ynov.ref}
+            onMouseMove={ynov.onMouseMove}
+            className="info-card ynov-card spotlight"
+          >
             <img
               src="/img/photos/Ynov accueil.avif"
               alt="Accueil Ynov Campus"
@@ -35,7 +45,11 @@ export default function EcoleAlternance() {
           </div>
 
           {/* ALTERNANCE */}
-          <div className="info-card coface-card">
+          <div
+            ref={coface.ref}
+            onMouseMove={coface.onMouseMove}
+            className="info-card coface-card spotlight"
+          >
             {/* Vidéo en boucle muette : autoPlay/loop/muted/playsInline sont des booléens JSX.
                 playsInline est crucial sur iOS (sinon la vidéo passe en fullscreen).
                 muted est indispensable pour que autoPlay fonctionne sur la plupart des navigateurs. */}

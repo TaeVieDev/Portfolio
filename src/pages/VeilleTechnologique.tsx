@@ -1,3 +1,21 @@
+import { useSpotlight } from "../hooks/useSpotlight";
+
+// Sous-composant carte avec spotlight. Idem MissionsE5 : on extrait pour pouvoir
+// appeler useSpotlight par instance (un ref par carte).
+function VeilleCard({ title, body }: { title: string; body: string }) {
+  const { ref, onMouseMove } = useSpotlight();
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      className="veille_technologique_card spotlight"
+    >
+      <h3>{title}</h3>
+      <p>{body}</p>
+    </div>
+  );
+}
+
 // Page Veille techno. Données séparées du JSX : pratique pour ajouter une carte,
 // je n'ai qu'à pousser un objet dans le tableau, pas à toucher le rendu.
 const veilles = [
@@ -33,10 +51,7 @@ export default function VeilleTechnologique() {
           {/* Le mapping bonne pratique : on tape sur une donnée stable et unique (title)
               pour la key, plutôt que sur l'index qui peut changer si on réordonne. */}
           {veilles.map((v) => (
-            <div key={v.title} className="veille_technologique_card">
-              <h3>{v.title}</h3>
-              <p>{v.body}</p>
-            </div>
+            <VeilleCard key={v.title} title={v.title} body={v.body} />
           ))}
         </div>
       </div>
