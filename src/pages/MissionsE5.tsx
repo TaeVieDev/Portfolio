@@ -1,124 +1,15 @@
+import { Link } from "react-router-dom";
 import { useSpotlight } from "../hooks/useSpotlight";
+import { type Mission, missionsByCategory } from "../data/missions";
 
-// Page Missions E5. Bon exemple de séparation données / rendu :
-// - Tableaux de MissionCard tout en haut → facile à éditer/ajouter
-// - Un sous-composant Card qui sait rendre UNE carte
-// - La page principale qui mappe les tableaux et délègue à Card
+// Page Missions E5.
+// Les données vivent dans /data/missions.ts → une seule source de vérité partagée
+// avec la page détail /missions/:slug.
 
-type TechIcon = {
-  label: string;
-  icon?: string; // "?" = optionnel : soit icon, soit customIcon, mais pas obligé d'avoir les deux
-  customIcon?: string;
-};
-
-// Type pour une carte de projet. Permet d'avoir l'auto-complétion + erreur TS si je
-// rate un champ. Le "?" sur badgeClass dit que c'est optionnel.
-type MissionCard = {
-  title: string;
-  description: string;
-  image: string;
-  badge: string;
-  badgeClass?: string;
-  techs: TechIcon[];
-  actions: { label: string; href: string }[];
-};
-
-const formation: MissionCard[] = [
-  {
-    title: "Portfolio",
-    description:
-      "Création d'un portfolio pour présenter mon parcours, mes expériences et mes projets en vue de ma soutenance pour l'épreuve E5 du BTS SIO.",
-    image: "/img/photos/minia-portfolio.png",
-    badge: "FORMATION",
-    badgeClass: "atelier-badge",
-    techs: [
-      { label: "HTML5", icon: "devicon-html5-plain colored" },
-      { label: "CSS3", icon: "devicon-css3-plain colored" },
-      { label: "JavaScript", icon: "devicon-javascript-plain colored" },
-      { label: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
-    ],
-    actions: [{ label: "Github", href: "https://github.com/thomas-montout/portfolio" }],
-  },
-  {
-    title: "Serveur Apache",
-    description:
-      "Configuration et déploiement d'un serveur Apache pour héberger des applications web.",
-    image: "/img/photos/minia-apache.jpg",
-    badge: "FORMATION",
-    badgeClass: "atel-badge",
-    techs: [
-      { label: "Linux", icon: "devicon-linux-plain colored" },
-      { label: "Apache", icon: "devicon-apache-plain colored" },
-    ],
-    actions: [{ label: "Documentation", href: "/pdf/doc-apache.pdf" }],
-  },
-  {
-    title: 'Projet Symfony "Biblios"',
-    description: "Développement d'une application web avec le framework Symfony.",
-    image: "/img/photos/minia-symfony.jpg",
-    badge: "FORMATION",
-    badgeClass: "atelier-badge",
-    techs: [{ label: "Symfony", icon: "devicon-symfony-plain colored" }],
-    actions: [{ label: "Documentation", href: "/pdf/doc-symfony.pdf" }],
-  },
-  {
-    title: "Gestion de parc informatique",
-    description:
-      "Mise en place d'une solution de gestion de parc informatique pour assurer la maintenance et la sécurité des systèmes.",
-    image: "/img/photos/minia-ocs-glpi.jpg",
-    badge: "FORMATION",
-    badgeClass: "atelier-badge",
-    techs: [
-      { label: "Linux", icon: "devicon-linux-plain colored" },
-      { label: "Apache", icon: "devicon-apache-plain colored" },
-      { label: "MySQL", icon: "devicon-mysql-plain colored" },
-      { label: "PHP", icon: "devicon-php-plain colored" },
-      { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
-    ],
-    actions: [{ label: "Documentation", href: "/pdf/doc-OCS-GLPI.pdf" }],
-  },
-];
-
-const personnels: MissionCard[] = [
-  {
-    title: "In the cave",
-    description:
-      "Développement d'un jeu web interactif et immersif utilisant React, TypeScript et Vite.",
-    image: "/img/photos/minia-inthecave.jpg",
-    badge: "PERSONNEL",
-    badgeClass: "perso-badge",
-    techs: [
-      { label: "React", icon: "devicon-react-plain colored" },
-      { label: "TypeScript", icon: "devicon-typescript-plain colored" },
-      { label: "Vite", icon: "devicon-vite-plain colored" },
-    ],
-    actions: [
-      { label: "Documentation", href: "/pdf/doc-inthecave.pdf" },
-      { label: "Github", href: "https://github.com/thomas-montout/In-the-cave" },
-    ],
-  },
-  {
-    title: "Absolute Stream",
-    description:
-      "Développement en collaboration d'une plateforme sociale autour des films et série intégrant l'API de TMDb.",
-    image: "/img/photos/minia-absolutestream.png",
-    badge: "PERSONNEL",
-    badgeClass: "perso-badge",
-    techs: [
-      { label: "Next.js", icon: "devicon-nextjs-plain colored" },
-      { label: "TypeScript", icon: "devicon-typescript-plain colored" },
-      { label: "Tailwind CSS", icon: "devicon-react-plain colored" },
-    ],
-    actions: [{ label: "Github", href: "https://github.com/thomas-montout/Absolute-Stream" }],
-  },
-];
-
-// Sous-composant Card : reçoit un MissionCard via prop "mission".
-// Le ?? (nullish coalescing) : si badgeClass est null/undefined, on retourne "".
-// Différent de || qui se déclencherait aussi pour "", 0, false…
-// On appelle useSpotlight DANS ce sous-composant : chaque carte aura son propre ref.
-// Si on l'appelait au-dessus dans une boucle .map(), ça casserait les Rules of Hooks.
-function Card({ mission }: { mission: MissionCard }) {
+// Sous-composant Card : reçoit un Mission via prop.
+// useSpotlight DANS ce sous-composant → chaque carte a son propre ref + handler.
+// Si on l'appelait dans une boucle .map(), ça casserait les Rules of Hooks.
+function Card({ mission }: { mission: Mission }) {
   const { ref, onMouseMove } = useSpotlight();
   return (
     <div ref={ref} onMouseMove={onMouseMove} className="card-E5 spotlight">
@@ -140,7 +31,12 @@ function Card({ mission }: { mission: MissionCard }) {
           ))}
         </div>
         <div className="card-actions">
-          {mission.actions.map((a) => (
+          {/* Lien vers la page détail de la mission (case study).
+              <Link> = navigation client-side React Router, pas de reload. */}
+          <Link to={`/missions/${mission.slug}`} className="btn-mission">
+            Étudier
+          </Link>
+          {mission.links.map((a) => (
             <a key={a.label} href={a.href} className="btn-mission">
               {a.label}
             </a>
@@ -152,6 +48,10 @@ function Card({ mission }: { mission: MissionCard }) {
 }
 
 export default function MissionsE5() {
+  // Récupération des missions par catégorie via le helper.
+  const formation = missionsByCategory("formation");
+  const personnels = missionsByCategory("personnel");
+
   return (
     <section className="missions_E5_section">
       <div className="missions_E5_container">
@@ -168,18 +68,17 @@ export default function MissionsE5() {
         <h3 className="subsection_title">Projets en formation</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
           {formation.map((m) => (
-            <Card key={m.title} mission={m} />
+            <Card key={m.slug} mission={m} />
           ))}
         </div>
 
-        {/* Section "Projets en entreprise" : grille vide pour l'instant, à remplir plus tard */}
         <h3 className="subsection_title">Projets en entreprise</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8" />
 
         <h3 className="subsection_title">Projets personnels</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
           {personnels.map((m) => (
-            <Card key={m.title} mission={m} />
+            <Card key={m.slug} mission={m} />
           ))}
         </div>
       </div>
