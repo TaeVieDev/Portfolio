@@ -1,53 +1,15 @@
-import FlipCard from "../components/FlipCard";
+import BentoHero from "../components/BentoHero";
 
-// Page d'accueil. Composée de deux sections : Hero + About.
+// Page d'accueil. Composée de deux sections : Bento Hero + About.
 // Le React Fragment <>…</> permet de retourner plusieurs éléments sans wrapper
 // inutile dans le DOM (sinon il faudrait une <div> parente).
 export default function Home() {
   return (
     <>
-      {/* ========== HERO ========== */}
-      <section className="hero_section">
-        <div className="hero_container">
-          {/* Le composant FlipCard reçoit ses images en props : il est totalement
-              indépendant. Si demain je veux le réutiliser ailleurs, je change juste
-              les props. */}
-          <FlipCard
-            frontSrc="/img/photos/herophoto2.jpg"
-            frontAlt="Photo de profil - Recto"
-            backSrc="/img/photos/luffy.png"
-            backAlt="Photo de profil - Verso"
-          />
-
-          {/* En JSX, le texte entre balises est libre. Les espaces autour des <strong>
-              doivent souvent être ajoutés avec {" "} sinon ils sont mangés par le parser. */}
-          <h1>
-            Je m'appelle Thomas et j'étudie le développement de{" "}
-            <strong>solutions logicielles et</strong>{" "}
-            <strong>d'applications métiers</strong>
-          </h1>
-
-          <div className="social_links">
-            <a
-              href="https://github.com/thomas-montout"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-square-github" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/thomas-montout"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-square-linkedin" />
-            </a>
-            <a href="mailto:montout-thomas@hotmail.fr">
-              <i className="fa-solid fa-envelope" />
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Nouveau hero en bento grid : grille asymétrique multi-cellules.
+          Toute la logique (FlipCard, liens sociaux, intro, stack) est encapsulée
+          dans BentoHero pour garder Home lisible. */}
+      <BentoHero />
 
       {/* id="about" → cible pour l'ancre #about depuis la nav.
           ScrollToTop le détecte et scrolle dessus. */}

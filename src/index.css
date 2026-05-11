@@ -781,6 +781,249 @@ footer p {
 }
 
 /* ========================================
+   BENTO HERO — Grille asymétrique style Apple
+   ========================================
+   Concept clé : grid-template-areas.
+   On dessine la grille en mots, chaque cellule a grid-area: <nom>,
+   et c'est la grille qui place tout automatiquement.
+   Beaucoup plus lisible que les col-span/row-span. */
+.bento {
+  display: grid;
+  gap: 1rem;
+  padding: 3rem 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  /* Desktop : 4 colonnes, layout asymétrique */
+  grid-template-columns: 1.2fr 1.2fr 1fr 1fr;
+  grid-template-areas:
+    "photo photo bts    coface"
+    "photo photo stack  stack"
+    "intro intro intro  social";
+}
+
+/* Cellule de base : verre dépoli + bord subtil + transition douce au hover */
+.bento__cell {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bento__cell:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Chaque cellule prend sa zone nommée */
+.bento__photo {
+  grid-area: photo;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.bento__photo:hover {
+  background: transparent;
+  transform: none;
+}
+
+.bento__bts {
+  grid-area: bts;
+}
+.bento__coface {
+  grid-area: coface;
+}
+.bento__stack {
+  grid-area: stack;
+}
+.bento__intro {
+  grid-area: intro;
+}
+.bento__social {
+  grid-area: social;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 2rem;
+}
+
+/* Mini-éléments des cellules */
+.bento__label {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.bento__icon {
+  font-size: 1.5rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.bento__cell h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.bento__cell p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.bento__stack-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+.bento__intro h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.bento__intro p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.bento__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background: rgba(232, 216, 196, 0.15);
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.bento__cta:hover {
+  background: var(--color-text-secondary);
+  color: #1a1a2e;
+  transform: translateX(4px);
+}
+
+.bento__social a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition:
+    color 0.3s,
+    transform 0.3s;
+}
+
+.bento__social a:hover {
+  color: var(--color-text-primary);
+  transform: scale(1.15);
+}
+
+/* Tablette : on garde la structure mais on resserre */
+@media (max-width: 992px) {
+  .bento {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "photo  photo"
+      "bts    coface"
+      "stack  stack"
+      "intro  intro"
+      "social social";
+  }
+  .bento__intro h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile : tout en une colonne */
+@media (max-width: 600px) {
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "intro"
+      "bts"
+      "coface"
+      "stack"
+      "social";
+    padding: 1.5rem 0;
+  }
+  .bento__intro h1 {
+    font-size: 1.5rem;
+  }
+  .bento__cell {
+    padding: 1rem;
+  }
+  .bento__stack-icons {
+    font-size: 1.6rem;
+  }
+}
+
+/* ========================================
+   SPOTLIGHT — Halo lumineux au curseur
+   ========================================
+   Concept clé : on a un pseudo-élément ::before qui contient un radial-gradient,
+   centré sur var(--mouse-x) var(--mouse-y). Le JS (hook useSpotlight) met à jour
+   ces variables CSS au mousemove. Aucune state React → ultra fluide. */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(232, 216, 196, 0.12),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Le contenu interne doit passer devant le halo */
+.spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
    PAGES — CSS PORTÉ DE L'ANCIEN SITE
    ======================================== */
 
