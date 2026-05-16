@@ -1,6 +1,4 @@
-// Source unique de vérité pour les missions.
-// Avant : les missions étaient écrites en dur dans MissionsE5.tsx → impossible
-// de les réutiliser ailleurs sans copier-coller. Maintenant on importe ce fichier
+// On importe ce fichier
 // depuis la section Missions sur Home ET depuis la page détail /missions/:slug.
 //
 // NOTION : "Single source of truth" — une donnée n'est définie qu'à UN seul endroit.
@@ -9,7 +7,7 @@
 export type TechIcon = {
   label: string;
   icon?: string; // classe Devicon, ex: "devicon-react-plain colored"
-  customIcon?: string; // ou chemin d'image custom (logo non couvert par Devicon)
+  customIcon?: string; // ou chemin d'image custom
 };
 
 export type MissionCategory = "formation" | "entreprise" | "personnel";
@@ -18,7 +16,7 @@ export type Mission = {
   slug: string; // identifiant URL-friendly, sert dans /missions/:slug
   title: string;
   description: string; // résumé affiché sur la carte
-  longDescription?: string; // texte long pour la page détail (case study)
+  longDescription?: string; // texte long pour la page détail
   context?: string; // contexte / problématique
   result?: string; // ce que j'ai appris ou produit
   image: string;
@@ -113,7 +111,8 @@ export const missions: Mission[] = [
       "Développement d'un jeu web interactif et immersif utilisant React, TypeScript et Vite.",
     longDescription:
       "Jeu d'aventure narrative en React + TypeScript. Projet personnel pour explorer les hooks avancés, la gestion d'état complexe et les animations. Cadre : une caverne, des choix, plusieurs fins.",
-    context: "Envie d'apprendre React en construisant quelque chose de fun plutôt qu'un énième todo.",
+    context:
+      "Envie d'apprendre React en construisant quelque chose de fun plutôt qu'un énième todo.",
     image: "/img/photos/minia-inthecave.jpg",
     badge: "PERSONNEL",
     badgeClass: "perso-badge",
@@ -149,7 +148,7 @@ export const missions: Mission[] = [
   },
 ];
 
-// Helpers pour filtrer/trouver. Permet d'éviter de répéter ces filtres dans les composants.
+// Permet d'éviter de répéter ces filtres dans les composants.
 export const missionsByCategory = (cat: MissionCategory) =>
   missions.filter((m) => m.category === cat);
 

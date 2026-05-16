@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 // Composant "effet pur" : ne rend rien à l'écran (return null), il existe juste
 // pour exécuter du code quand l'URL change.
-// Pattern utile pour : analytics, scroll restoration, sync avec un store externe…
+// ScrollToTop : à chaque changement de route, scroll en haut de la page.
 export default function ScrollToTop() {
   // Déstructuration de l'objet location en pathname + hash.
   // pathname = "/contact", hash = "#about" (vide si pas d'ancre).
@@ -20,9 +20,8 @@ export default function ScrollToTop() {
     }
     // Sinon scroll en haut de la page à chaque changement de route.
     window.scrollTo(0, 0);
-    // Deps : on relance à chaque changement de pathname OU de hash.
-  }, [pathname, hash]);
+  }, [pathname, hash]); // EO useEffect, on met pathname et hash en dépendances pour que l'effet se déclenche à chaque changement de route et d'ancre).
 
-  // Retourner null = "ne rend rien". Valide en React et idiomatique pour ce pattern.
+  // Retourner null = "ne rend rien". Ce composant n'a pas de rendu visuel, il sert juste à exécuter du code (side effect) quand l'URL change.
   return null;
 }

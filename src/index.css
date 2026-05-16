@@ -123,11 +123,7 @@ p {
 .bg-decor__dots {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    circle,
-    rgba(232, 216, 196, 0.08) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, rgba(232, 216, 196, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
   /* Léger masque pour adoucir les bords et focaliser le motif au centre */
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
@@ -828,7 +824,7 @@ footer p {
   }
 }
 
-/* ========== MISSION DETAIL — Page case study ========== */
+/* ========== MISSION DETAIL ========== */
 .mission-detail {
   padding: 5rem 1rem 4rem;
 }

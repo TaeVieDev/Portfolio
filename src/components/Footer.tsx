@@ -1,5 +1,4 @@
-// Composant fonctionnel le plus simple : pas d'état, pas d'effet,
-// juste du JSX qui prend zéro prop. C'est ce qu'on appelle un composant "présentationnel".
+// Composant "présentationnel".
 export default function Footer() {
   return (
     <footer>

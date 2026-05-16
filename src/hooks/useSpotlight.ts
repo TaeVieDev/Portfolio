@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 // CUSTOM HOOK : fonction qui commence par "use" + qui utilise d'autres hooks.
 // Permet de factoriser une logique réactive et de la réutiliser sur plusieurs composants.
-// Ici on encapsule l'effet "spotlight au curseur" : un halo lumineux qui suit la souris.
+// Ici on encapsule l'effet "spotlight" : un halo lumineux qui suit la souris.
 //
 // IDÉE TECHNIQUE :
 // - On écoute mousemove sur l'élément

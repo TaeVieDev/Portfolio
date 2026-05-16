@@ -9,7 +9,7 @@ export default function MissionDetail() {
   // useParams typé : on lui dit que :slug est un string optionnel.
   // L'API renvoie toujours un objet, mais les valeurs peuvent être undefined.
   const { slug } = useParams<{ slug: string }>();
-  const mission = slug ? findMission(slug) : undefined;
+  const mission = slug ? findMission(slug) : undefined; // Recherche de la mission correspondante au slug.
   const { ref, onMouseMove } = useSpotlight();
 
   // Mission introuvable → on redirige proprement.
@@ -26,11 +26,7 @@ export default function MissionDetail() {
 
         {/* En-tête avec image + titre + badge */}
         <div ref={ref} onMouseMove={onMouseMove} className="mission-detail__hero spotlight">
-          <img
-            className="mission-detail__image"
-            src={mission.image}
-            alt={mission.title}
-          />
+          <img className="mission-detail__image" src={mission.image} alt={mission.title} />
           <div className="mission-detail__heading">
             <span className={`mission-badge ${mission.badgeClass ?? ""}`}>{mission.badge}</span>
             <h1>{mission.title}</h1>

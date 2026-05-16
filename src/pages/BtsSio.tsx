@@ -2,10 +2,9 @@ import { useSpotlight } from "../hooks/useSpotlight";
 
 // Section Le BTS : deux cartes côte à côte (SLAM / SISR) qui passent en colonne sur mobile.
 // Le prop "id" (par défaut "bts") sert d'ancre pour le scroll depuis le header pill.
-// Pattern de prop avec valeur par défaut via déstructuration : `{ id = "bts" }`.
 export default function BtsSio({ id = "bts" }: { id?: string }) {
   // Deux appels indépendants au hook : chacun a son propre ref.
-  // Hooks appelés au TOP du composant → conforme aux Rules of Hooks.
+  // Hooks appelés en haut du composant, pas de condition autour.
   const slam = useSpotlight();
   const sisr = useSpotlight();
 

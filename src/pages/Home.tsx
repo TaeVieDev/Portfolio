@@ -32,11 +32,12 @@ export default function Home() {
             <strong>tester, casser… et recommencer</strong>.
             <br />
             C'est comme ça que le <strong>développement informatique</strong> est devenu une vraie{" "}
-            <strong>passion</strong>. En <strong>autodidacte</strong>, j'ai découvert ce que j'aimais
-            vraiment : résoudre des problèmes, structurer des idées et leur donner vie grâce au code.
+            <strong>passion</strong>. En <strong>autodidacte</strong>, j'ai découvert ce que
+            j'aimais vraiment : résoudre des problèmes, structurer des idées et leur donner vie
+            grâce au code.
             <br />
-            Aujourd'hui, je poursuis ce chemin en BTS SIO SLAM en alternance, avec une envie claire :
-            monter en compétences, gagner de l'expérience terrain et construire des bases solides.
+            Aujourd'hui, je poursuis ce chemin en BTS SIO SLAM en alternance, avec une envie claire
+            : monter en compétences, gagner de l'expérience terrain et construire des bases solides.
             <br />
             Objectif : devenir <strong>Software Engineer</strong>.
           </p>
@@ -102,18 +103,20 @@ export default function Home() {
                 <span className="job-location">Versailles, La Celle-Saint-Cloud CDD</span>
                 <ul className="job-tasks">
                   <li>Assistance aux personnels pour la résolution de problèmes informatiques</li>
-                  <li>Collaboration avec les équipes pour améliorer les outils numériques existants</li>
                   <li>
-                    Gestion administrative : suivi des absences et retards, saisie des données sur les
-                    logiciels de gestion scolaire
+                    Collaboration avec les équipes pour améliorer les outils numériques existants
+                  </li>
+                  <li>
+                    Gestion administrative : suivi des absences et retards, saisie des données sur
+                    les logiciels de gestion scolaire
                   </li>
                   <li>
                     Médiation et discipline : gestion des conflits entre élèves, application du
                     règlement intérieur
                   </li>
                   <li>
-                    Organisation d'événements : participation à la mise en place de projets éducatifs
-                    et culturels
+                    Organisation d'événements : participation à la mise en place de projets
+                    éducatifs et culturels
                   </li>
                 </ul>
               </div>

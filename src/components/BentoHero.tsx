@@ -1,22 +1,23 @@
 import { Link } from "react-router-dom";
 import FlipCard from "./FlipCard";
 
-// Hero version "bento grid" — style Apple : grille asymétrique où chaque cellule
+// Hero version "bento grid" : grille asymétrique où chaque cellule
 // porte une info clé. On voit en un coup d'œil : photo, formation, alternance,
 // stack, présentation, contact.
 //
-// CONCEPT PRINCIPAL : CSS Grid avec grid-template-areas.
-// Au lieu de penser en col-span / row-span, on dessine la grille en ASCII :
-//   "photo photo bts coface"
-//   "photo photo stack stack"
-//   "intro intro intro social"
-// Chaque mot = un nom de zone. Les cellules ont juste grid-area: photo,
-// la grille les place automatiquement. Hyper lisible.
+// CONCEPT PRINCIPAL : CSS Grid avec grid-template-areas. = on dessine la grille en ASCII dans le CSS, chaque mot = une zone. Ensuite, chaque cellule de la grille dit "je suis dans la zone X" avec grid-area: X. Hyper lisible, facile à maintenir et faire évoluer.
+// Au lieu de penser en col-span / row-span, on dessine la grille en ASCII.
+// Chaque mot = un nom de zone, c'est à dire une variable qu'on peut réutiliser dans grid-area.
+// Si on veut faire évoluer la grille, on modifie juste le dessin ASCII dans le CSS, pas besoin de toucher au JSX.
+
+// id = "hero" par défaut, mais on peut le surcharger en passant une prop id. Utile pour réutiliser ce composant dans d'autres contextes que la home.
 export default function BentoHero({ id = "hero" }: { id?: string }) {
   return (
     <section id={id} className="bento">
-      {/* Cellule 1 : photo (FlipCard récupéré tel quel) */}
+      {/* Cellule 1 : photo (FlipCard) */}
+      {/* bento__cell = c'est une cellule de la grille, bento__photo = c'est la cellule qui contient la photo (utile pour le CSS) */}
       <div className="bento__cell bento__photo">
+        {" "}
         <FlipCard
           frontSrc="/img/photos/herophoto2.jpg"
           frontAlt="Photo de profil - Recto"

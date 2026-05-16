@@ -31,10 +31,10 @@ function Card({ mission }: { mission: Mission }) {
           ))}
         </div>
         <div className="card-actions">
-          {/* Lien vers la page détail de la mission (case study).
+          {/* Lien vers la page détail de la mission.
               <Link> = navigation client-side React Router, pas de reload. */}
           <Link to={`/missions/${mission.slug}`} className="btn-mission">
-            Étudier
+            Détails
           </Link>
           {mission.links.map((a) => (
             <a key={a.label} href={a.href} className="btn-mission">
