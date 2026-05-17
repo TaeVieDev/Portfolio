@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSpotlight } from "../hooks/useSpotlight";
 import { type Mission, missionsByCategory } from "../data/missions";
+import SectionTitle from "../components/SectionTitle";
 
 // Page Missions E5.
 // Les données vivent dans /data/missions.ts → une seule source de vérité partagée
@@ -55,15 +56,11 @@ export default function MissionsE5({ id = "missions" }: { id?: string }) {
   return (
     <section id={id} className="missions_E5_section">
       <div className="missions_E5_container">
-        <div className="section_title">
-          <h2>
-            <strong>Missions E5</strong>
-          </h2>
-          <p>
-            Projets réalisés dans le cadre de ma formation en BTS SIO, mettant en avant mes
-            compétences techniques et ma capacité à travailler sur des projets variés.
-          </p>
-        </div>
+        <SectionTitle>Missions E5</SectionTitle>
+        <p>
+          Projets réalisés dans le cadre de ma formation en BTS SIO, mettant en avant mes
+          compétences techniques et ma capacité à travailler sur des projets variés.
+        </p>
 
         <h3 className="subsection_title">Projets en formation</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">

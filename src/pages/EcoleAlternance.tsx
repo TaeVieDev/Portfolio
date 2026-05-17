@@ -1,4 +1,5 @@
 import { useSpotlight } from "../hooks/useSpotlight";
+import SectionTitle from "../components/SectionTitle";
 
 // Page École & Alternance.
 // À RETENIR pour le JSX :
@@ -13,12 +14,8 @@ export default function EcoleAlternance({ id = "ecole" }: { id?: string }) {
   return (
     <section id={id} className="ecole_alternance_section">
       <div className="ecole_alternance_container">
-        <div className="section_title">
-          <h2>
-            <strong>École et Alternance</strong>
-          </h2>
-          <p>Mon parcours de formation et mon expérience professionnelle</p>
-        </div>
+        <SectionTitle>École et Alternance</SectionTitle>
+        <p>Mon parcours de formation et mon expérience professionnelle</p>
 
         <div className="grid grid-cols-1 gap-4 mt-8">
           {/* ECOLE */}

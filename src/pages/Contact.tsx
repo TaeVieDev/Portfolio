@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SectionTitle from "../components/SectionTitle";
 
 // Type "union de littéraux" : Status ne peut être QUE "idle" ou "sent".
 // Super utile pour modéliser une machine à états simple :
@@ -27,15 +28,11 @@ export default function Contact({ id = "contact" }: { id?: string }) {
   return (
     <section id={id} className="contact_section">
       <div className="contact_container">
-        <div className="section_title">
-          <h2>
-            <strong>Me contacter</strong>
-          </h2>
-          <p>
-            Vous avez un projet, une opportunité ou simplement envie d'échanger ? N'hésitez pas à
-            me contacter !
-          </p>
-        </div>
+        <SectionTitle>Me contacter</SectionTitle>
+        <p>
+          Vous avez un projet, une opportunité ou simplement envie d'échanger ? N'hésitez pas à me
+          contacter !
+        </p>
 
         <div className="contact-form-wrapper">
           <div className="flex justify-center">

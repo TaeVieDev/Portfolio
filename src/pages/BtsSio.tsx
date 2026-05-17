@@ -1,4 +1,5 @@
 import { useSpotlight } from "../hooks/useSpotlight";
+import SectionTitle from "../components/SectionTitle";
 
 // Section Le BTS : deux cartes côte à côte (SLAM / SISR) qui passent en colonne sur mobile.
 // Le prop "id" (par défaut "bts") sert d'ancre pour le scroll depuis le header pill.
@@ -11,11 +12,7 @@ export default function BtsSio({ id = "bts" }: { id?: string }) {
   return (
     <section id={id} className="bts_sio_section">
       <div className="bts_sio_container">
-        <div className="section_title">
-          <h2>
-            <strong>Le BTS SIO</strong>
-          </h2>
-        </div>
+        <SectionTitle>Le BTS SIO</SectionTitle>
         <p>
           Le <strong>BTS Services Informatiques aux Organisations</strong> forme des techniciens
           supérieurs capables de gérer et développer des solutions informatiques.

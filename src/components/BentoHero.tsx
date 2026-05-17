@@ -19,7 +19,7 @@ export default function BentoHero({ id = "hero" }: { id?: string }) {
       <div className="bento__cell bento__photo">
         {" "}
         <FlipCard
-          frontSrc="/img/photos/herophoto2.jpg"
+          frontSrc="/img/photos/herophoto.png"
           frontAlt="Photo de profil - Recto"
           backSrc="/img/photos/luffy.png"
           backAlt="Photo de profil - Verso"

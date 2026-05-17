@@ -1,4 +1,5 @@
 import BentoHero from "../components/BentoHero";
+import SectionTitle from "../components/SectionTitle";
 import BtsSio from "./BtsSio";
 import Competence from "./Competence";
 import EcoleAlternance from "./EcoleAlternance";
@@ -20,11 +21,7 @@ export default function Home() {
       {/* About : section spécifique à la home, donc inline ici */}
       <section id="about" className="about_me_section">
         <div className="about_me_container">
-          <div className="section_title">
-            <h2>
-              <strong>En quelques mots</strong>
-            </h2>
-          </div>
+          <SectionTitle>En quelques mots</SectionTitle>
           <p>
             Tout a commencé par une <strong>curiosité</strong>.
             <br />
@@ -44,11 +41,7 @@ export default function Home() {
         </div>
 
         <div className="about_me_container">
-          <div className="section_title">
-            <h2>
-              <strong>Mon parcours académique</strong>
-            </h2>
-          </div>
+          <SectionTitle>Mon parcours académique</SectionTitle>
 
           <div className="education-timeline">
             <div className="education-item">
@@ -86,11 +79,7 @@ export default function Home() {
         </div>
 
         <div className="about_me_container">
-          <div className="section_title">
-            <h2>
-              <strong>Mon parcours professionnel</strong>
-            </h2>
-          </div>
+          <SectionTitle>Mon parcours professionnel</SectionTitle>
           <div className="education-timeline">
             <div className="education-item">
               <span className="year">2019-2025</span>
