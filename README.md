@@ -35,13 +35,13 @@ portfolio/
 └─ src/
    ├─ main.tsx             Bootstrap React + BrowserRouter
    ├─ App.tsx              Routes : / et /missions/:slug
-   ├─ index.css            Tokens @theme + CSS global BEM
+   ├─ index.css            Tokens @theme + CSS global
    ├─ components/          Briques réutilisables
    │  ├─ Header.tsx        Pill nav avec IntersectionObserver pour le lien actif
    │  ├─ Footer.tsx
-   │  ├─ Background.tsx    Dots + halo curseur (CSS vars mises à jour en JS)
+   │  ├─ Background.tsx    Dots + halo curseur
    │  ├─ BentoHero.tsx     Hero en grille asymétrique (grid-template-areas)
-   │  ├─ FlipCard.tsx      Carte photo recto-verso (animation 3D)
+   │  ├─ FlipCard.tsx      Carte photo recto-verso
    │  └─ ScrollToTop.tsx   Remonte la page à chaque navigation
    ├─ pages/               Sections de la home + page détail
    │  ├─ Home.tsx          Compose toutes les sections en single-page
@@ -142,18 +142,6 @@ Le BTS SIO (Services Informatiques aux Organisations) est un diplôme de niveau 
   d'applications, c'est l'option suivie ici.
 - **SISR** (Solutions d'Infrastructure, Systèmes et Réseaux) — administration
   réseau et systèmes.
-
-L'examen comporte plusieurs épreuves dont deux sont directement représentées sur
-ce portfolio :
-
-- **E5 — Conception et développement de solutions** : missions techniques réalisées
-  en entreprise (mon alternance chez Coface).
-- **E6 — Cybersécurité, parcours de professionnalisation et veille technologique** :
-  démarche de veille et projets personnels.
-
-Le portfolio sert de support pour ces épreuves : il regroupe les preuves de
-compétences attendues (réalisations, contexte technique, livrables) que le
-candidat présente au jury.
 
 ---
 
