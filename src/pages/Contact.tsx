@@ -1,28 +1,41 @@
 import { useState } from "react";
 import SectionTitle from "../components/SectionTitle";
 
-// Type "union de littéraux" : Status ne peut être QUE "idle" ou "sent".
-// Super utile pour modéliser une machine à états simple :
-// si je tape status === "loading", TS hurle parce que ce n'est pas dans l'union.
-type Status = "idle" | "sent";
+// Union de littéraux : 4 états pour couvrir le cycle de vie de l'envoi.
+type Status = "idle" | "sending" | "sent" | "error";
+
+// Endpoint Formspree : constante hors composant pour éviter de la recréer à chaque render.
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdbbdjy";
 
 export default function Contact({ id = "contact" }: { id?: string }) {
-  // useState typé via <Status> : l'état est forcément du bon type.
   const [status, setStatus] = useState<Status>("idle");
 
-  // React.FormEvent<HTMLFormElement> : type précis de l'événement de submit.
-  // Préférer ça à "any" pour avoir l'auto-complétion sur e.currentTarget, e.preventDefault, etc.
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // Empêche le comportement par défaut (rechargement de page sur submit).
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: connecter à un service d'envoi (Formspree, EmailJS, backend…)
-    setStatus("sent");
-    // Reset des champs du formulaire. Le cast est nécessaire car currentTarget
-    // est typé Element par défaut et n'a pas reset() sans cast vers HTMLFormElement.
-    (e.currentTarget as HTMLFormElement).reset();
-    // Après 4s on remet l'état initial. setTimeout retourne un id qu'on pourrait
-    // clear, mais ici c'est jetable et pas critique.
-    setTimeout(() => setStatus("idle"), 4000);
+    // On capture la ref du form AVANT le await : React peut nettoyer e.currentTarget après une étape async.
+    const form = e.currentTarget;
+    setStatus("sending");
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        // FormData construit le payload à partir des attributs name="" des inputs.
+        body: new FormData(form),
+        // Demande à Formspree de répondre en JSON au lieu d'une redirection HTML.
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        setStatus("sent");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      // Erreur réseau (offline, CORS, etc.) : fetch rejette la promesse.
+      setStatus("error");
+    }
   };
 
   return (
@@ -109,9 +122,17 @@ export default function Contact({ id = "contact" }: { id?: string }) {
                     />
                   </div>
                   <div className="md:col-span-2">
-                    {/* Texte du bouton dépendant de l'état : pattern très courant. */}
-                    <button type="submit" className="form-submit">
-                      {status === "sent" ? "Message envoyé ✓" : "Envoyer le message"}
+                    {/* disabled pendant l'envoi : évite le double-clic.
+                        Chaîne de && : si la condition est vraie, affiche le texte ; sinon React n'affiche rien. */}
+                    <button
+                      type="submit"
+                      className="form-submit"
+                      disabled={status === "sending"}
+                    >
+                      {status === "idle" && "Envoyer le message"}
+                      {status === "sending" && "Envoi…"}
+                      {status === "sent" && "Message envoyé ✓"}
+                      {status === "error" && "Erreur, réessayer"}
                     </button>
                   </div>
                 </div>

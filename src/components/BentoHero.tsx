@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import FlipCard from "./FlipCard";
 
 // Hero version "bento grid" : grille asymétrique où chaque cellule
@@ -14,64 +13,70 @@ import FlipCard from "./FlipCard";
 export default function BentoHero({ id = "hero" }: { id?: string }) {
   return (
     <section id={id} className="bento">
-      {/* Cellule 1 : photo (FlipCard) */}
-      {/* bento__cell = c'est une cellule de la grille, bento__photo = c'est la cellule qui contient la photo (utile pour le CSS) */}
+      {/* Cellule 1 : photo (FlipCard) — non cliquable comme lien, juste le flip interne */}
       <div className="bento__cell bento__photo">
-        {" "}
         <FlipCard
           frontSrc="/img/photos/herophoto.png"
           frontAlt="Photo de profil - Recto"
-          backSrc="/img/photos/luffy.png"
+          backSrc="/img/photos/tm-logo.png"
           backAlt="Photo de profil - Verso"
         />
       </div>
 
-      {/* Cellule 2 : BTS SIO */}
-      <div className="bento__cell bento__bts">
+      {/* Cellule 2 : BTS SIO — clic = scroll vers #bts.
+          On utilise <a href="#id"> et pas <Link to="#id"> : avec scroll-behavior: smooth
+          en CSS global, l'ancre HTML native scroll fluide sans React Router. */}
+      <a href="#bts" className="bento__cell bento__bts bento__cell--link">
         <span className="bento__icon">
           <i className="fa-solid fa-graduation-cap" />
         </span>
         <span className="bento__label">Formation</span>
         <h3>BTS SIO SLAM</h3>
         <p>Ynov Campus</p>
-      </div>
+      </a>
 
-      {/* Cellule 3 : Alternance Coface */}
-      <div className="bento__cell bento__coface">
+      {/* Cellule 3 : Alternance Coface — clic = scroll vers #ecole */}
+      <a href="#ecole" className="bento__cell bento__coface bento__cell--link">
         <span className="bento__icon">
           <i className="fa-solid fa-briefcase" />
         </span>
         <span className="bento__label">Alternance</span>
         <h3>Coface</h3>
         <p>Administrateur Systèmes IT</p>
-      </div>
+      </a>
 
-      {/* Cellule 4 : Stack technique */}
-      <div className="bento__cell bento__stack">
+      {/* Cellule 4 : Stack technique — clic = scroll vers #competences.
+          Liste plate, flex-wrap centrée. La vraie pyramide est dans la page Compétences. */}
+      <a href="#competences" className="bento__cell bento__stack bento__cell--link">
         <span className="bento__label">Ma stack</span>
         <div className="bento__stack-icons">
+          <i className="devicon-typescript-plain colored" title="TypeScript" />
+          <i className="devicon-javascript-plain colored" title="JavaScript" />
+          <i className="devicon-react-plain colored" title="React" />
+          <i className="devicon-nextjs-plain colored" title="Next.js" />
+          <i className="devicon-symfony-original colored" title="Symfony" />
+          <i className="devicon-java-plain colored" title="Java" />
+          <i className="devicon-php-plain colored" title="PHP" />
+          <i className="devicon-postgresql-plain colored" title="PostgreSQL" />
+          <i className="devicon-mysql-plain colored" title="MySQL" />
           <i className="devicon-html5-plain colored" title="HTML5" />
           <i className="devicon-css3-plain colored" title="CSS3" />
-          <i className="devicon-javascript-plain colored" title="JavaScript" />
-          <i className="devicon-typescript-plain colored" title="TypeScript" />
-          <i className="devicon-react-plain colored" title="React" />
-          <i className="devicon-php-plain colored" title="PHP" />
-          <i className="devicon-symfony-original colored" title="Symfony" />
         </div>
-      </div>
+      </a>
 
-      {/* Cellule 5 : Présentation + CTA */}
+      {/* Cellule 5 : Présentation + CTA.
+          Nom et tagline séparés pour une vraie hiérarchie typo (avant : un seul <h1> avec <strong> inline qui rendait bizarre). */}
       <div className="bento__cell bento__intro">
-        <h1>
-          Je m'appelle <strong>Thomas</strong>
-        </h1>
+        <h1>Thomas Montout</h1>
+        <p className="bento__tagline">Développeur en formation, alternant chez Coface</p>
         <p>
           Étudiant en BTS SIO, j'étudie le développement de{" "}
           <strong>solutions logicielles et d'applications métiers</strong>.
         </p>
-        <Link to="/missions-e5" className="bento__cta">
+        {/* CTA réparé : ancien lien pointait vers un chemin de fichier source (.tsx) qui n'est pas une route. */}
+        <a href="#missions" className="bento__cta">
           Voir mes projets <i className="fa-solid fa-arrow-right" />
-        </Link>
+        </a>
       </div>
 
       {/* Cellule 6 : Réseaux */}

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSpotlight } from "../hooks/useSpotlight";
-import { type Mission, missionsByCategory } from "../data/missions";
+import { type Mission, missions, missionsByCategory } from "../data/missions";
 import SectionTitle from "../components/SectionTitle";
 
 // Page Missions E5.
@@ -52,11 +52,15 @@ export default function MissionsE5({ id = "missions" }: { id?: string }) {
   // Récupération des missions par catégorie via le helper.
   const formation = missionsByCategory("formation");
   const personnels = missionsByCategory("personnel");
+  const entreprise = missionsByCategory("entreprise");
+  // Projets E6 = filtrage direct sur le tableau missions (l'épreuve est portée par chaque mission).
+  // On a fusionné E5 et E6 ici pour éviter un conflit d'id="missions" dupliqué dans le DOM.
+  const projetsE6 = missions.filter((m) => m.epreuve === "E6");
 
   return (
     <section id={id} className="missions_E5_section">
       <div className="missions_E5_container">
-        <SectionTitle>Missions E5</SectionTitle>
+        <SectionTitle>Missions & Projets</SectionTitle>
         <p>
           Projets réalisés dans le cadre de ma formation en BTS SIO, mettant en avant mes
           compétences techniques et ma capacité à travailler sur des projets variés.
@@ -70,11 +74,22 @@ export default function MissionsE5({ id = "missions" }: { id?: string }) {
         </div>
 
         <h3 className="subsection_title">Projets en entreprise</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+          {entreprise.map((m) => (
+            <Card key={m.slug} mission={m} />
+          ))}
+        </div>
 
         <h3 className="subsection_title">Projets personnels</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
           {personnels.map((m) => (
+            <Card key={m.slug} mission={m} />
+          ))}
+        </div>
+
+        <h3 className="subsection_title">Projets E6 (SLAM)</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+          {projetsE6.map((m) => (
             <Card key={m.slug} mission={m} />
           ))}
         </div>

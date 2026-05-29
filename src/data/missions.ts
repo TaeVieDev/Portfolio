@@ -10,7 +10,7 @@ export type TechIcon = {
   customIcon?: string; // ou chemin d'image custom
 };
 
-export type MissionCategory = "formation" | "entreprise" | "personnel";
+export type MissionCategory = "formation" | "entreprise" | "personnel"; // "|" = union type, permet de restreindre les valeurs possibles.
 
 export type Mission = {
   slug: string; // identifiant URL-friendly, sert dans /missions/:slug
@@ -25,6 +25,7 @@ export type Mission = {
   techs: TechIcon[];
   links: { label: string; href: string }[];
   category: MissionCategory;
+  epreuve?: string; // "E5" ou "E6", pour filtrer dans les pages dédiées. "?" = champ optionnel, pas forcément présent sur tous les objets Mission.
 };
 
 export const missions: Mission[] = [
@@ -110,7 +111,7 @@ export const missions: Mission[] = [
     description:
       "Développement d'un jeu web interactif et immersif utilisant React, TypeScript et Vite.",
     longDescription:
-      "Jeu d'aventure narrative en React + TypeScript. Projet personnel pour explorer les hooks avancés, la gestion d'état complexe et les animations. Cadre : une caverne, des choix, plusieurs fins.",
+      "Ce projet est un RPG (Role Playing Game) textuel interactif développé avec React. À l’origine, ce projet est un exercice JavaScript issu de freeCodeCamp, réalisé pour comprendre les bases du langage. Plutôt que de le laisser tel quel, j’ai choisi de le transformer en un véritable terrain d’expérimentation afin de monter en compétences sur des technologies modernes utilisées en entreprise",
     context:
       "Envie d'apprendre React en construisant quelque chose de fun plutôt qu'un énième todo.",
     image: "/img/photos/minia-inthecave.jpg",
@@ -142,8 +143,119 @@ export const missions: Mission[] = [
       { label: "Next.js", icon: "devicon-nextjs-plain colored" },
       { label: "TypeScript", icon: "devicon-typescript-plain colored" },
       { label: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored" },
+      { label: "NeonDB", icon: "/img/icons/neondb-logo.png" },
+      { label: "Prisma", icon: "devicon-prisma-plain colored" },
+      { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
     ],
     links: [{ label: "Github", href: "https://github.com/thomas-montout/Absolute-Stream" }],
+    category: "personnel",
+    epreuve: "E6",
+  },
+  {
+    slug: "v-room",
+    title: "V.ROOM",
+    description:
+      "Développement d'un site e-commerce de vente de véhicules avec une architecture headless utilisant React et Symfony.",
+    longDescription:
+      "Site e-commerce de vente de véhicules basé sur une architecture headless, avec un frontend React/TypeScript et un backend Symfony exposant une API REST. Fonctionnalités : catalogue, panier, paiement fictif et un assisant IA pour aider les utilisateurs à choisir leur voiture idéale.",
+    image: "/img/photos/minia-vroom.png",
+    badge: "FORMATION",
+    badgeClass: "formation-badge",
+    techs: [
+      { label: "Next.js", icon: "devicon-nextjs-plain colored" },
+      { label: "TypeScript", icon: "devicon-typescript-plain colored" },
+      { label: "React", icon: "devicon-react-plain colored" },
+      { label: "Symfony", icon: "devicon-symfony-plain colored" },
+      { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+    ],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    category: "formation",
+  },
+  {
+    slug: "bot-iam",
+    title: "Bot IAM",
+    description: "Développement d'un bot d'assistance intelligente pour l'entreprise.",
+    longDescription:
+      "Bot d'assistance intelligente basé sur le retrieval augmented generation (RAG) for the IAM.",
+    image: "/img/photos/minia-vroom.png",
+    badge: "ENTREPRISE",
+    badgeClass: "entreprise-badge",
+    techs: [
+      { label: "Next.js", icon: "devicon-nextjs-plain colored" },
+      { label: "Python", icon: "devicon-python-plain colored" },
+      { label: "FastAPI", icon: "devicon-fastapi-plain colored" },
+      { label: "Pandas", icon: "devicon-pandas-plain colored" },
+      { label: "Numpy", icon: "devicon-numpy-plain colored" },
+    ],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    category: "entreprise",
+  },
+  {
+    slug: "atelier-symfony-twig",
+    title: "Atelier - Symfony-Twig",
+    description:
+      "Travaux pratiques pour maitriser le moteur de templates Twig et son intégration avec Symfony.",
+    longDescription:
+      "Atelier de découverte du moteur de templates Twig et de son intégration avec Symfony. Création de templates dynamiques, utilisation des blocs, héritage, filtres et fonctions Twig pour construire des vues web efficaces.",
+    image: "/img/photos/minia-vroom.png",
+    badge: "FORMATION",
+    badgeClass: "formation-badge",
+    techs: [
+      { label: "PHP", icon: "devicon-php-plain colored" },
+      { label: "Symfony", icon: "devicon-symfony-plain colored" },
+      { label: "Twig", icon: "devicon-twig-plain colored" },
+    ],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    category: "formation",
+  },
+  {
+    slug: "atelier-mvc",
+    title: "Atelier MVC",
+    description: "Petit atelier pour comprendre les bases du pattern MVC.",
+    longDescription:
+      "Atelier de découverte du pattern MVC (Model-View-Controller). Compréhension des rôles de chaque composant et de leur interaction.",
+    image: "/img/photos/minia-vroom.png",
+    badge: "FORMATION",
+    badgeClass: "formation-badge",
+    techs: [{ label: "PHP", icon: "devicon-php-plain colored" }],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    category: "formation",
+  },
+  {
+    slug: "gestion-parc-tickets",
+    title: "Gestion de parc informatique et centre de services (GLPI & OCS)",
+    description:
+      "Atelier de mise en œuvre d'une solution complète de gestion de services informatiques en couplant GLPI et OCS Inventory.",
+    longDescription:
+      "L'objectif de cet atelier est de mettre en œuvre une solution complète de Gestion de Services Informatiques en couplant GLPI (Gestionnaire Libre de Parc Informatique) et OCS Inventory. L'enjeu est de maîtriser le cycle de vie d'un ticket de bout en bout (création, qualification, traitement, clôture) tout en exploitant une base de données de configuration dynamique",
+    image: "/img/photos/minia-vroom.png",
+    badge: "FORMATION",
+    badgeClass: "formation-badge",
+    techs: [
+      { label: "OCS Inventory", icon: "/img/icons/ocs-logo.svg" },
+      { label: "GLPI", icon: "/img/icons/glpi-logo.svg" },
+      { label: "VMware", icon: "/img/icons/vmware-logo.svg" },
+      { label: "Linux", icon: "devicon-linux-plain colored" },
+    ],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    category: "formation",
+  },
+  {
+    slug: "pink-monster",
+    title: "Pink Monster",
+    description:
+      "Développement d'un jeu de plateforme 2D en pixel art avec Phaser pour apprendre les bases de la gestion d'états et la programation orientée objet appliquée au jeu vidéo.",
+    longDescription:
+      "Le joueur incarne un monstre rose qui doit traverser des niveaux remplis d'obstacles et d'ennemis. Projet personnel pour découvrir les fondamentaux du développement de jeux vidéo en JavaScript avec Phaser.",
+    image: "/img/photos/minia-vroom.png",
+    badge: "PERSONNEL",
+    badgeClass: "perso-badge",
+    techs: [
+      { label: "Phaser", icon: "/img/icons/phaser-logo.svg" },
+      { label: "JavaScript", icon: "devicon-javascript-plain colored" },
+      { label: "Html", icon: "devicon-html5-plain colored" },
+    ],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
     category: "personnel",
   },
 ];

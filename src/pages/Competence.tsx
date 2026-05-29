@@ -1,4 +1,5 @@
 import { useSpotlight } from "../hooks/useSpotlight";
+import SectionTitle from "../components/SectionTitle";
 
 // Page Compétences. Idée principale : sortir les données dans des tableaux typés,
 // et laisser le JSX faire UNIQUEMENT du rendu. Beaucoup plus lisible que de copier-coller
@@ -11,6 +12,22 @@ type Skill = {
   icon: string;
   customIcon?: string;
 };
+
+// Découpe un tableau en plusieurs sous-tableaux selon un pattern de tailles.
+// Ex: chunkByPattern([a,b,c,d,e,f,g], [4,3]) → [[a,b,c,d], [e,f,g]]
+// Utilisé pour rendre les skills en pyramide descendante (rangées de tailles décroissantes).
+function chunkByPattern<T>(items: T[], pattern: number[]): T[][] {
+  const rows: T[][] = [];
+  let cursor = 0;
+  for (const size of pattern) {
+    rows.push(items.slice(cursor, cursor + size));
+    cursor += size;
+  }
+  // S'il reste des items au-delà du pattern, on les met dans une dernière rangée
+  // pour ne perdre aucune donnée si le pattern est mal dimensionné.
+  if (cursor < items.length) rows.push(items.slice(cursor));
+  return rows;
+}
 
 // Les ":" précisent le type du tableau. Si je rajoute un skill mal formé, TS hurle.
 const frontend: Skill[] = [
@@ -55,15 +72,20 @@ function SkillCard({ skill }: { skill: Skill }) {
   );
 }
 
-// Sous-composant local : factorise le rendu de la grille pour ne pas le réécrire 3x.
-// Quand on découpe en petits composants comme ça, on évite la répétition.
-function SkillGrid({ skills }: { skills: Skill[] }) {
+// Grille en pyramide descendante.
+// Chaque rangée est un flex row centré, taille = nombre d'items voulus par étage.
+// La prop "pattern" décrit l'agencement : [4,3] = 4 puis 3.
+function SkillPyramid({ skills, pattern }: { skills: Skill[]; pattern: number[] }) {
+  const rows = chunkByPattern(skills, pattern);
   return (
-    <div className="skills grid grid-cols-2 md:grid-cols-4 gap-4 justify-center mx-auto">
-      {/* .map() = produit un tableau de JSX à partir d'un tableau de données.
-          La key doit être UNIQUE et STABLE → on utilise le label (pas l'index si possible). */}
-      {skills.map((s) => (
-        <SkillCard key={s.label} skill={s} />
+    <div className="skills-pyramid">
+      {rows.map((row, i) => (
+        // key sur l'index de rangée : stable car les rangées ne sont jamais réordonnées.
+        <div key={i} className="skills-pyramid__row">
+          {row.map((s) => (
+            <SkillCard key={s.label} skill={s} />
+          ))}
+        </div>
       ))}
     </div>
   );
@@ -73,19 +95,37 @@ export default function Competence({ id = "competences" }: { id?: string }) {
   return (
     <section id={id} className="competences_section">
       <div className="competences_container">
+        <SectionTitle>Compétences</SectionTitle>
+
         <div className="category">
           <h3>Frontend</h3>
-          <SkillGrid skills={frontend} />
+          {/* 7 items → pyramide 4/3 */}
+          <SkillPyramid skills={frontend} pattern={[4, 3]} />
         </div>
 
         <div className="category">
           <h3>Backend</h3>
-          <SkillGrid skills={backend} />
+          {/* 3 items → pyramide 2/1 */}
+          <SkillPyramid skills={backend} pattern={[2, 1]} />
         </div>
 
         <div className="category">
           <h3>Outils</h3>
-          <SkillGrid skills={tools} />
+          {/* 4 items → pyramide 3/1 */}
+          <SkillPyramid skills={tools} pattern={[3, 1]} />
+        </div>
+
+        {/* Bouton téléchargement du tableau de synthèse SLAM (Excel).
+            Réutilise les classes .cv-download / .btn-cv déjà stylées. */}
+        <div className="cv-download">
+          <a
+            href="/excel/tableau-de-synthese.xlsx"
+            className="btn-cv"
+            download
+          >
+            <i className="fa-solid fa-file-excel" />
+            Tableau de synthèse
+          </a>
         </div>
       </div>
     </section>

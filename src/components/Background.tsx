@@ -63,9 +63,12 @@ export default function Background() {
   return (
     // Le composant retourne une div qui contient les éléments de décoration de fond. La classe "bg-decor" est utilisée pour appliquer les styles CSS, et la référence glowRef est attachée à cette div pour permettre la manipulation du halo lumineux.
     <div className="bg-decor" ref={glowRef}>
-      {/* Couche 1 : grille de dots (CSS pur, voir index.css) */}
+      {/* Couche 1 : grille de dots de base (CSS pur, voir index.css) */}
       <div className="bg-decor__dots" />
-      {/* Couche 2 : halo curseur (radial-gradient positionné via --cursor-x/y) */}
+      {/* Couche 2 : dots "allumés" — même motif plus brillant, masqué par un radial centré sur le curseur.
+          Hérite de --cursor-x/y via le parent glowRef, donc aucun JS supplémentaire. */}
+      <div className="bg-decor__dots-lit" />
+      {/* Couche 3 : halo curseur (radial-gradient positionné via --cursor-x/y) */}
       <div className="bg-decor__glow" />
     </div>
   );

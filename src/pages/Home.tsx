@@ -51,23 +51,6 @@ export default function Home() {
                 <span className="school">Ynov Campus</span>
               </div>
             </div>
-
-            <div className="education-item">
-              <span className="year">2019</span>
-              <div className="education-details">
-                <strong>Licence Sociologie</strong>
-                <span className="school">UVSQ Yvelines</span>
-              </div>
-            </div>
-
-            <div className="education-item">
-              <span className="year">2018</span>
-              <div className="education-details">
-                <strong>Licence d'Anglais</strong>
-                <span className="school">UAG Schoelcher</span>
-              </div>
-            </div>
-
             <div className="education-item">
               <span className="year">2017</span>
               <div className="education-details">
@@ -82,14 +65,14 @@ export default function Home() {
           <SectionTitle>Mon parcours professionnel</SectionTitle>
           <div className="education-timeline">
             <div className="education-item">
-              <span className="year">2019-2025</span>
+              <span className="year">2019 - 2025</span>
               <span className="separator" />
               <div className="education-details">
-                <strong>Assistant d'Éducation</strong>
+                <strong>Assistant d'éducation</strong>
                 <span className="school">
                   Collège J-P Rameau, EIB de la Jonchère, Lycée Hoche, Lycée Jules Ferry
                 </span>
-                <span className="job-location">Versailles, La Celle-Saint-Cloud CDD</span>
+                <span className="job-location">Versailles, La Celle-Saint-Cloud • CDD</span>
                 <ul className="job-tasks">
                   <li>Assistance aux personnels pour la résolution de problèmes informatiques</li>
                   <li>
@@ -110,6 +93,20 @@ export default function Home() {
                 </ul>
               </div>
             </div>
+            <div className="education-item">
+              <span className="year">2025 - en cours</span>
+              <span className="separator" />
+              <div className="education-details">
+                <strong>Application support niv.2</strong>
+                <span className="school">Coface</span>
+                <span className="job-location">Bois-Colombes • Alternance</span>
+                <ul className="job-tasks">
+                  <li>Gestion des identités et des accès aux applications métiers</li>
+                  <li>Support technique de niveau 2 pour les utilisateurs finaux</li>
+                  <li>Participation à des projets d'amélioration continue du workflow IAM</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div className="cv-download">
@@ -126,6 +123,7 @@ export default function Home() {
       <BtsSio />
       <Competence />
       <EcoleAlternance />
+      {/* MissionsE5 inclut maintenant aussi les projets E6 (fusion pour éviter le conflit d'id). */}
       <MissionsE5 />
       <Contact />
     </>
