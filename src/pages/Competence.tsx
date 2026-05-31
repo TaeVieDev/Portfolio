@@ -16,7 +16,7 @@ import SectionTitle from "../components/SectionTitle";
 // ou FontAwesome (ex: "fa-solid fa-cube") — les deux marchent via le même <i>.
 type Skill = {
   label: string;
-  icon: string;
+  icon?: string;
   customIcon?: string;
 };
 
