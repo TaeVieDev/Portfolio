@@ -5,7 +5,7 @@ import Background from "./components/Background";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollUI from "./components/ScrollUI";
 import Home from "./pages/Home";
-import MissionDetail from "./pages/MissionDetail";
+import MissionsList from "./pages/MissionsList";
 import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
 
 // Composant racine. Architecture après refonte single-page :
@@ -13,6 +13,7 @@ import { useRevealOnScroll } from "./hooks/useRevealOnScroll";
 //   /missions/:slug   → Page détail d'une mission (case study)
 //   *                 → fallback vers la home
 //
+
 // Toutes les anciennes routes (/bts-sio, /competence…) ont été supprimées :
 // elles deviennent des ancres (#bts, #competences…) sur la home.
 // Si quelqu'un tape encore l'ancienne URL, le wildcard le ramène à /.
@@ -28,8 +29,8 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* :slug = paramètre dynamique. MissionDetail le récupère via useParams. */}
-        <Route path="/missions/:slug" element={<MissionDetail />} />
+        {/* Liste complète d'une catégorie (cible du bouton "Afficher plus" de la home). */}
+        <Route path="/missions/categorie/:category" element={<MissionsList />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

@@ -1004,33 +1004,8 @@ footer p {
   }
 }
 
-/* ========== MISSION DETAIL ========== */
-.mission-detail {
-  padding: 5rem 1rem 4rem;
-  /* Fade-in à l'arrivée sur la page (transition de route).
-     Le reveal-section global s'en charge déjà via opacity+translateY,
-     mais on ajoute un léger blur initial pour un effet "focus qui se forme". */
-  animation: mission-detail-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes mission-detail-enter {
-  from {
-    filter: blur(6px);
-  }
-  to {
-    filter: blur(0);
-  }
-}
-
-.mission-detail__container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.mission-detail__back {
+/* Bouton "Retour aux missions" en haut de la page liste /missions/categorie/:category */
+.list-back {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -1041,92 +1016,8 @@ footer p {
   transition: color 0.3s ease;
 }
 
-.mission-detail__back:hover {
+.list-back:hover {
   color: var(--color-text-primary);
-}
-
-.mission-detail__hero {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mission-detail__image {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-.mission-detail__heading {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mission-detail__heading h1 {
-  font-size: 2.2rem;
-  color: var(--color-text-primary);
-  font-weight: 600;
-  margin: 0;
-}
-
-.mission-detail__lead {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.mission-detail__techs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 1rem 0;
-}
-
-.mission-detail__block {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 1.75rem;
-}
-
-.mission-detail__block h2 {
-  color: var(--color-text-primary);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem;
-  letter-spacing: 0.5px;
-}
-
-.mission-detail__block p {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.mission-detail__links {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-  .mission-detail__heading h1 {
-    font-size: 1.5rem;
-  }
-  .mission-detail__image {
-    height: 180px;
-  }
-  .mission-detail__block {
-    padding: 1.25rem;
-  }
 }
 
 /* ========================================
@@ -1188,20 +1079,6 @@ footer p {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.mission-badge {
-  width: 100%;
-  text-align: center;
-  color: var(--color-text-primary);
-  padding: 0.25rem;
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  background: rgba(255, 255, 255, 0.09);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 5px;
-}
-
 .card-E5-img {
   width: 100%;
   /* aspect-ratio: 16/9 → on fige le ratio plutôt qu'une hauteur fixe.
@@ -1244,8 +1121,11 @@ footer p {
 .card-E5-icons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  /* Gap réduit (1.5rem → 1rem) pour rester cohérent avec les icônes plus petites. */
+  gap: 1rem;
   justify-content: center;
+  /* Marge haute pour aérer entre la description et la rangée des techs. */
+  margin-top: 0.75rem;
   margin-bottom: 1rem;
 }
 
@@ -1253,24 +1133,29 @@ footer p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  /* Gap entre l'icône et son label, réduit (0.5rem → 0.35rem) pour compacter. */
+  gap: 0.35rem;
 }
 
 .tech-icon i {
-  font-size: 1.8rem;
+  /* Taille réduite (1.8rem → 1.4rem) : icônes moins envahissantes sur les cartes.
+     La taille du gros badge sur la page détail reste indépendante (autre composant). */
+  font-size: 1.4rem;
   transition: transform 0.3s ease;
 }
 
 .tech-icon .custom-tech-icon {
-  width: 1.8rem;
-  height: 1.8rem;
+  /* Aligné sur la taille des icônes Devicon ci-dessus. */
+  width: 1.4rem;
+  height: 1.4rem;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .tech-icon p {
   color: var(--color-text-primary);
-  font-size: 0.9rem;
+  /* Label tech légèrement réduit (0.9rem → 0.8rem) pour suivre la diminution des icônes. */
+  font-size: 0.8rem;
   font-weight: 500;
   margin: 0;
 }
@@ -2052,6 +1937,55 @@ footer p {
   margin-top: 3rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Layout flex : titre à gauche, lien "Afficher plus" à droite.
+     wrap = sur très petit écran, le lien passe sous le titre au lieu de déborder. */
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Placeholder "À venir" affiché dans une sous-section vide (page formation,
+   bloc Cybersécurité tant qu'aucune mission n'y est rattachée).
+   Subtil pour ne pas attirer le regard mais structurellement visible. */
+.empty-block-message {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-top: 1.5rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  opacity: 0.55;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  letter-spacing: 1px;
+}
+
+/* Lien "Afficher plus" à côté du titre de sous-section.
+   Ton secondaire pour rester discret, micro-interaction au hover. */
+.show-more {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.show-more i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.show-more:hover {
+  color: var(--color-text-primary);
+}
+
+.show-more:hover i {
+  transform: translateX(3px);
 }
 
 @media (max-width: 992px) {

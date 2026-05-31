@@ -39,9 +39,12 @@ export function useRevealOnScroll() {
           }
         });
       },
-      // threshold:0.1 = la section est "vue" dès que 10% est visible.
+      // threshold:0 = la section est "vue" dès qu'un seul pixel croise le viewport.
+      // Pourquoi 0 et pas 0.1 ? Pour les sections plus hautes que ~10x le viewport (mobile,
+      // missions qui empilent toutes les cartes en 1 colonne), intersectionRatio max =
+      // viewport_height / section_height < 0.1 → l'observer ne se déclencherait JAMAIS.
       // rootMargin négatif en bas = on déclenche un peu avant que le bas du viewport l'atteigne.
-      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
 
     sections.forEach((section) => {

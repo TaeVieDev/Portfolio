@@ -18,7 +18,7 @@ export default function BentoHero({ id = "hero" }: { id?: string }) {
         <FlipCard
           frontSrc="/img/photos/herophoto.png"
           frontAlt="Photo de profil - Recto"
-          backSrc="/img/photos/tm-logo.png"
+          backSrc="/img/photos/tm-logo1.png"
           backAlt="Photo de profil - Verso"
         />
       </div>

@@ -1,61 +1,50 @@
 import { Link } from "react-router-dom";
-import { useSpotlight } from "../hooks/useSpotlight";
-import { type Mission, missions, missionsByCategory } from "../data/missions";
+import { missions, missionsByCategory } from "../data/missions";
+import MissionCard from "../components/MissionCard";
 import SectionTitle from "../components/SectionTitle";
 
 // Page Missions E5.
 // Les données vivent dans /data/missions.ts → une seule source de vérité partagée
-// avec la page détail /missions/:slug.
+// avec la page détail /missions/:slug et la page liste /missions/categorie/:category.
+//
+// Sur la home on n'affiche que les 3 premières missions de chaque catégorie pour
+// éviter une section géante (surtout en mobile, 1 colonne) ; un bouton "Afficher
+// plus" amène vers la page liste complète si la catégorie en compte davantage.
 
-// Sous-composant Card : reçoit un Mission via prop.
-// useSpotlight DANS ce sous-composant → chaque carte a son propre ref + handler.
-// Si on l'appelait dans une boucle .map(), ça casserait les Rules of Hooks.
-function Card({ mission }: { mission: Mission }) {
-  const { ref, onMouseMove } = useSpotlight();
+// Petit helper local : entête d'une sous-section avec son titre + le lien "Afficher plus"
+// quand il y a plus de 3 missions. Évite de dupliquer la même JSX 4 fois plus bas.
+function SubsectionHeader({
+  title,
+  href,
+  showMore,
+}: {
+  title: string;
+  href: string;
+  showMore: boolean;
+}) {
   return (
-    <div ref={ref} onMouseMove={onMouseMove} className="card-E5 spotlight">
-      <img className="card-E5-img" src={mission.image} alt={mission.title} />
-      <div className={`mission-badge ${mission.badgeClass ?? ""}`}>{mission.badge}</div>
-      <div className="card-E5-body">
-        <h5 className="card-E5-title">{mission.title}</h5>
-        <p className="card-E5-text">{mission.description}</p>
-        <div className="card-E5-icons">
-          {mission.techs.map((t) => (
-            <div key={t.label} className="tech-icon">
-              {t.customIcon ? (
-                <img src={t.customIcon} alt={t.label} className="custom-tech-icon" />
-              ) : (
-                <i className={t.icon} />
-              )}
-              <p>{t.label}</p>
-            </div>
-          ))}
-        </div>
-        <div className="card-actions">
-          {/* Lien vers la page détail de la mission.
-              <Link> = navigation client-side React Router, pas de reload. */}
-          <Link to={`/missions/${mission.slug}`} className="btn-mission">
-            Détails
-          </Link>
-          {mission.links.map((a) => (
-            <a key={a.label} href={a.href} className="btn-mission">
-              {a.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
+    <h3 className="subsection_title">
+      <span>{title}</span>
+      {showMore && (
+        <Link to={href} className="show-more">
+          Afficher plus <i className="fa-solid fa-arrow-right" />
+        </Link>
+      )}
+    </h3>
   );
 }
 
 export default function MissionsE5({ id = "missions" }: { id?: string }) {
   // Récupération des missions par catégorie via le helper.
   const formation = missionsByCategory("formation");
-  const personnels = missionsByCategory("personnel");
   const entreprise = missionsByCategory("entreprise");
+  const personnels = missionsByCategory("personnel");
   // Projets E6 = filtrage direct sur le tableau missions (l'épreuve est portée par chaque mission).
   // On a fusionné E5 et E6 ici pour éviter un conflit d'id="missions" dupliqué dans le DOM.
   const projetsE6 = missions.filter((m) => m.epreuve === "E6");
+
+  // Limite à 3 par sous-section sur la home. Le reste est accessible via "Afficher plus".
+  const LIMIT = 3;
 
   return (
     <section id={id} className="missions_E5_section">
@@ -66,31 +55,47 @@ export default function MissionsE5({ id = "missions" }: { id?: string }) {
           compétences techniques et ma capacité à travailler sur des projets variés.
         </p>
 
-        <h3 className="subsection_title">Projets en formation</h3>
+        <SubsectionHeader
+          title="Projets en formation"
+          href="/missions/categorie/formation"
+          showMore={formation.length > LIMIT}
+        />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          {formation.map((m) => (
-            <Card key={m.slug} mission={m} />
+          {formation.slice(0, LIMIT).map((m) => (
+            <MissionCard key={m.slug} mission={m} />
           ))}
         </div>
 
-        <h3 className="subsection_title">Projets en entreprise</h3>
+        <SubsectionHeader
+          title="Projets en entreprise"
+          href="/missions/categorie/entreprise"
+          showMore={entreprise.length > LIMIT}
+        />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          {entreprise.map((m) => (
-            <Card key={m.slug} mission={m} />
+          {entreprise.slice(0, LIMIT).map((m) => (
+            <MissionCard key={m.slug} mission={m} />
           ))}
         </div>
 
-        <h3 className="subsection_title">Projets personnels</h3>
+        <SubsectionHeader
+          title="Projets épreuve E6"
+          href="/missions/categorie/e6"
+          showMore={projetsE6.length > LIMIT}
+        />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          {personnels.map((m) => (
-            <Card key={m.slug} mission={m} />
+          {projetsE6.slice(0, LIMIT).map((m) => (
+            <MissionCard key={m.slug} mission={m} />
           ))}
         </div>
 
-        <h3 className="subsection_title">Projets E6 (SLAM)</h3>
+        <SubsectionHeader
+          title="Projets personnels"
+          href="/missions/categorie/personnel"
+          showMore={personnels.length > LIMIT}
+        />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          {projetsE6.map((m) => (
-            <Card key={m.slug} mission={m} />
+          {personnels.slice(0, LIMIT).map((m) => (
+            <MissionCard key={m.slug} mission={m} />
           ))}
         </div>
       </div>
