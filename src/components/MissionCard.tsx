@@ -25,8 +25,7 @@ export default function MissionCard({ mission }: { mission: Mission }) {
             </div>
           ))}
         </div>
-        {/* Boutons : uniquement les liens fournis par la donnée (Documentation PDF, Github…).
-            Plus de bouton "Détails" depuis le retrait de la page case study /missions/:slug. */}
+        {/* Boutons : uniquement les liens fournis par la donnée (Documentation PDF, Github…).*/}
         {mission.links.length > 0 && (
           <div className="card-actions">
             {mission.links.map((a) => (

@@ -127,9 +127,9 @@ export const missions: Mission[] = [
       "Vérifier qu'un téléchargement n'a pas été altéré via SHA-256.",
     image: "/img/photos/kali-linux1.png",
     techs: [
-      { label: "Linux", icon: "devicon-linux-plain colored" },
+      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" }, { label: "Powershell", icon: "devicon-powershell-plain colored" }
     ],
-    links: [{ label: "Documentation", href: "/pdf/doc-verif-int%C3%A9grit%C3%A9.pdf" }],
+    links: [{ label: "Documentation", href: "/pdf/doc-verif-integrite.pdf" },],
     category: "formation",
     block: "cyber",
   },
@@ -140,7 +140,8 @@ export const missions: Mission[] = [
       "Démontrer pourquoi et comment chiffrer les communications.",
     image: "/img/photos/kali-linux1.png",
     techs: [
-      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
+      { label: "Linux", icon: "devicon-linux-plain colored" },
+      { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-besoin-chiffrement.pdf" }],
     category: "formation",
@@ -182,7 +183,8 @@ export const missions: Mission[] = [
       "Générer une paire de clés, chiffrer un message, puis signer et vérifier.",
     image: "/img/photos/kali-linux1.png",
     techs: [
-      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
+      { label: "Linux", icon: "devicon-linux-plain colored" },
+      { label: "openSSL", customIcon: "/img/icons/logo-openssl.png" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-assymetriccryptography.pdf" }],
     category: "formation",
@@ -272,7 +274,7 @@ export const missions: Mission[] = [
       { label: "Pandas", icon: "devicon-pandas-plain colored" },
       { label: "Numpy", icon: "devicon-numpy-plain colored" },
     ],
-    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/bot-iam" }],
     category: "entreprise",
   },
 
@@ -293,7 +295,8 @@ export const missions: Mission[] = [
       { label: "Vite", icon: "devicon-vite-plain colored" },
       { label: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
     ],
-    links: [{ label: "Github", href: "https://github.com/thomas-montout/portfolio" }],
+    links: [{ label: "Github", href: "https://github.com/thomas-montout/portfolio" }, { label: "Live", href: "https://thomas-montout.vercel.app/" }
+    ],
     category: "personnel",
   },
   {
@@ -309,8 +312,10 @@ export const missions: Mission[] = [
       { label: "Zustand", customIcon: "/img/icons/logo-zustand.png" },
     ],
     links: [
-      { label: "Documentation", href: "/pdf/doc-inthecave.pdf" },
+      { label: "Live", href: "https://in-the-cave-five.vercel.app/" },
       { label: "Github", href: "https://github.com/thomas-montout/In-the-cave" },
+      { label: "Documentation", href: "/pdf/doc-inthecave.pdf" },
+
     ],
     category: "personnel",
   },
@@ -329,6 +334,7 @@ export const missions: Mission[] = [
       { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
     ],
     links: [
+      { label: "Live", href: "https://absolute-stream.vercel.app/" },
       { label: "Github", href: "https://github.com/thomas-montout/Absolute-Stream" },
       { label: "Documentation", href: "/pdf/doc-abolutestream.pdf" },
     ],
@@ -365,7 +371,7 @@ export const missions: Mission[] = [
       { label: "JavaScript", icon: "devicon-javascript-plain colored" },
       { label: "Html", icon: "devicon-html5-plain colored" },
     ],
-    links: [{ label: "Github", href: "https://github.com/thomas-montout/V.ROOM" }],
+    links: [{ label: "Live", href: "https://thomas-montout.github.io/pink-monster/" }, { label: "Github", href: "https://github.com/thomas-montout/pink-monster" }],
     category: "personnel",
   },
   {
@@ -379,7 +385,7 @@ export const missions: Mission[] = [
       { label: "React", icon: "devicon-react-plain colored" },
       { label: "CSS3", icon: "devicon-css3-plain colored" },
     ],
-    links: [],
+    links: [{ label: "Live", href: "https://nathalieluc.fr/" }],
     category: "personnel",
   },
   {
@@ -393,11 +399,10 @@ export const missions: Mission[] = [
       { label: "TypeScript", icon: "devicon-typescript-plain colored" },
       { label: "Vite", icon: "devicon-vite-plain colored" },
     ],
-    links: [],
+    links: [{ label: "Live", href: "https://tempo-ten-psi.vercel.app/"}, { label: "Github", href: "https://github.com/thomas-montout/tempo"} ],
     category: "personnel",
-  },
+  }
 ];
-
 // ════════════════════════════════════════════════════════════════════
 // HELPERS — évitent de répéter les filtres dans les composants.
 // ════════════════════════════════════════════════════════════════════
