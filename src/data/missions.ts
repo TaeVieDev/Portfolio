@@ -60,7 +60,7 @@ export const missions: Mission[] = [
     slug: "serveur-apache",
     title: "Atelier — Serveur Apache",
     description:
-      "Installer un serveur Apache sur Ubuntu et explorer son arborescence de configuration pour héberger des sites web.",
+      "Installer un serveur Apache sur Ubuntu pour héberger des sites web.",
     image: "/img/photos/minia-apache.jpg",
     techs: [
       { label: "Linux", icon: "devicon-linux-plain colored" },
@@ -74,7 +74,7 @@ export const missions: Mission[] = [
     slug: "gestion-parc-informatique",
     title: "Atelier — OCS Inventory & GLPI",
     description:
-      "Déployer un serveur OCS Inventory couplé à GLPI pour inventorier automatiquement un parc Linux et Windows.",
+      "Déployer un serveur OCS Inventory couplé à GLPI pour inventorier automatiquement un parc informatique.",
     image: "/img/photos/minia-ocs-glpi.png",
     techs: [
       { label: "Linux", icon: "devicon-linux-plain colored" },
@@ -91,7 +91,7 @@ export const missions: Mission[] = [
     slug: "gestion-parc-tickets",
     title: "Atelier — Gestion de tickets (GLPI / OCS)",
     description:
-      "Manipuler le cycle de vie complet d'un ticket dans GLPI — création, qualification, traitement, clôture — et le lier à la CMDB OCS.",
+      "Manipuler le cycle de vie complet d'un ticket dans GLPI et le lier à OCS.",
     image: "/img/photos/minia-ocs-glpi.png",
     techs: [
       { label: "Linux", icon: "devicon-linux-plain colored" },
@@ -107,11 +107,11 @@ export const missions: Mission[] = [
     slug: "windows-server-2019",
     title: "Atelier — Windows Server 2019",
     description:
-      "Installer Windows Server 2019 en VM et le configurer (réseau, mises à jour, pare-feu) pour le préparer à recevoir les rôles serveur.",
+      "Installer Windows Server 2019 en VM et le configurer.",
     image: "/img/photos/minia-winserver.jpg",
     techs: [
       { label: "Windows Server", icon: "devicon-windows8-plain colored" },
-      { label: "VirtualBox", customIcon: "/img/icons/vmware-logo.svg" },
+      { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-windowsserver.pdf" }],
     category: "formation",
@@ -124,11 +124,10 @@ export const missions: Mission[] = [
     slug: "verif-integrite",
     title: "Labo — Vérification d'intégrité",
     description:
-      "Vérifier qu'un téléchargement n'a pas été altéré via SHA-256 et signatures GPG, et comprendre pourquoi MD5 n'est plus une option.",
+      "Vérifier qu'un téléchargement n'a pas été altéré via SHA-256.",
     image: "/img/photos/kali-linux1.png",
     techs: [
       { label: "Linux", icon: "devicon-linux-plain colored" },
-      { label: "GPG", icon: "devicon-bash-plain colored" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-verif-int%C3%A9grit%C3%A9.pdf" }],
     category: "formation",
@@ -138,11 +137,10 @@ export const missions: Mission[] = [
     slug: "besoin-chiffrement",
     title: "Labo — Besoin de chiffrement",
     description:
-      "Démontrer pourquoi chiffrer les communications n'est pas négociable, en menant une attaque MITM par empoisonnement du cache ARP.",
+      "Démontrer pourquoi et comment chiffrer les communications.",
     image: "/img/photos/kali-linux1.png",
     techs: [
-      { label: "Kali Linux", icon: "devicon-linux-plain colored" },
-      { label: "Arpspoof", icon: "devicon-bash-plain colored" },
+      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-besoin-chiffrement.pdf" }],
     category: "formation",
@@ -152,10 +150,10 @@ export const missions: Mission[] = [
     slug: "dvwa-deployment",
     title: "Labo — Déploiement DVWA",
     description:
-      "Monter un environnement DVWA isolé sur Kali Linux (pile LAMP) pour s'entraîner aux attaques web en toute légalité.",
+      "Monter un environnement DVWA isolé sur Kali Linux pour s'entraîner aux attaques web en toute légalité.",
     image: "/img/photos/dvwa.png",
     techs: [
-      { label: "Kali Linux", icon: "devicon-linux-plain colored" },
+      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
       { label: "Apache", icon: "devicon-apache-plain colored" },
       { label: "MariaDB", icon: "devicon-mysql-plain colored" },
       { label: "PHP", icon: "devicon-php-plain colored" },
@@ -168,12 +166,10 @@ export const missions: Mission[] = [
     slug: "dvwa-bruteforce",
     title: "Labo — Force brute sur DVWA",
     description:
-      "Mener une attaque par force brute de bout en bout sur DVWA, de la reconnaissance des utilisateurs jusqu'à l'exploitation via Burp Suite.",
+      "Mener une attaque par force brute de bout en bout sur DVWA.",
     image: "/img/photos/dvwa.png",
     techs: [
-      { label: "Kali Linux", icon: "devicon-linux-plain colored" },
-      { label: "Burp Suite", icon: "devicon-linux-plain colored" },
-      { label: "DVWA", icon: "devicon-php-plain colored" },
+      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-bruteforce.pdf" }],
     category: "formation",
@@ -183,11 +179,10 @@ export const missions: Mission[] = [
     slug: "crypto-asymetrique",
     title: "Labo — Cryptographie asymétrique",
     description:
-      "Mettre en pratique RSA via OpenSSL : générer une paire de clés, chiffrer un message entre Alice et Bob, puis signer et vérifier.",
+      "Générer une paire de clés, chiffrer un message, puis signer et vérifier.",
     image: "/img/photos/kali-linux1.png",
     techs: [
-      { label: "Linux", icon: "devicon-linux-plain colored" },
-      { label: "OpenSSL", icon: "devicon-bash-plain colored" },
+      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-assymetriccryptography.pdf" }],
     category: "formation",
@@ -210,12 +205,12 @@ export const missions: Mission[] = [
     slug: "atelier-symfony-twig",
     title: "Atelier — Symfony & Twig",
     description:
-      "Construire des vues dynamiques avec Twig dans Symfony : héritage de blocs, filtres et fonctions pour un templating propre.",
+      "Construire des vues dynamiques avec Twig dans Symfony.",
     image: "/img/photos/twig.png",
     techs: [
       { label: "PHP", icon: "devicon-php-plain colored" },
       { label: "Symfony", icon: "devicon-symfony-plain colored" },
-      { label: "Twig", icon: "devicon-twig-plain colored" },
+      { label: "Twig", customIcon: "/img/icons/logo-twig.png" },
     ],
     links: [],
     category: "formation",
@@ -225,7 +220,7 @@ export const missions: Mission[] = [
     slug: "atelier-mvc",
     title: "Atelier — Pattern MVC",
     description:
-      "Comprendre pourquoi un point d'entrée unique (index.php) est au cœur du pattern MVC et ce qu'il apporte en sécurité.",
+      "Comprendre le pattern MVC et ce qu'il apporte pour un projet web.",
     image: "/img/photos/minia-mvc.png",
     techs: [{ label: "PHP", icon: "devicon-php-plain colored" }],
     links: [{ label: "Documentation", href: "/pdf/doc-atelierMVC.pdf" }],
@@ -236,10 +231,10 @@ export const missions: Mission[] = [
     slug: "tp-mysql",
     title: "TP — MySQL / MariaDB",
     description:
-      "S'approprier SQL autour d'un mini-blog : tables, requêtes filtrées et agrégats, puis gestion des comptes et droits utilisateurs.",
+      "Tavail pratique pour s'approprier SQL autour d'un mini-blog.",
     image: "/img/photos/minia-mysql.png",
     techs: [
-      { label: "MariaDB", icon: "devicon-mysql-plain colored" },
+      { label: "MySQL", icon: "devicon-mysql-plain colored" },
       { label: "Linux", icon: "devicon-linux-plain colored" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-initiation-pratique-mysql-mariadb.pdf" }],
@@ -250,11 +245,11 @@ export const missions: Mission[] = [
     slug: "tp-php",
     title: "TP — PHP fondamentaux",
     description:
-      "Six exercices progressifs pour ancrer les bases du PHP côté serveur, du Hello World à la connexion PDO sur une base MySQL.",
+      "Six exercices progressifs pour ancrer les bases du PHP côté serveur.",
     image: "/img/photos/minia-php.jpeg",
     techs: [
-      { label: "PHP", icon: "devicon-php-plain colored" },
       { label: "MySQL", icon: "devicon-mysql-plain colored" },
+      { label: "PHP", icon: "devicon-php-plain colored" },
     ],
     links: [{ label: "Documentation", href: "/pdf/doc-travaux-pratique-fondamentauxPHP.pdf" }],
     category: "formation",
@@ -290,7 +285,7 @@ export const missions: Mission[] = [
     slug: "portfolio",
     title: "Projet — Portfolio",
     description:
-      "Portfolio refondu de zéro en React / TypeScript / Tailwind pour porter ma soutenance E5 et mettre en pratique une stack moderne.",
+      "Portfolio développé pour porter ma soutenance E5.",
     image: "/img/photos/minia-portfolio.png",
     techs: [
       { label: "React", icon: "devicon-react-plain colored" },
@@ -305,12 +300,13 @@ export const missions: Mission[] = [
     slug: "in-the-cave",
     title: "Projet — In the Cave",
     description:
-      "Transformer un exercice JavaScript freeCodeCamp en RPG textuel React / TypeScript pour monter en compétences sur une stack pro.",
+      "Transformer un exercice JavaScript freeCodeCamp en RPG textuel React / TypeScript pour monter en compétences.",
     image: "/img/photos/minia-inthecave.jpg",
     techs: [
       { label: "React", icon: "devicon-react-plain colored" },
       { label: "TypeScript", icon: "devicon-typescript-plain colored" },
       { label: "Vite", icon: "devicon-vite-plain colored" },
+      { label: "Zustand", customIcon: "/img/icons/logo-zustand.png" },
     ],
     links: [
       { label: "Documentation", href: "/pdf/doc-inthecave.pdf" },
@@ -322,7 +318,7 @@ export const missions: Mission[] = [
     slug: "absolute-stream",
     title: "Projet — Absolute Stream",
     description:
-      "Plateforme sociale type Letterboxd développée en équipe autour de l'API TMDb : profils, listes personnalisées et notations.",
+      "Plateforme sociale type Letterboxd développée en équipe autour d'une API.",
     image: "/img/photos/minia-absolutestream.png",
     techs: [
       { label: "Next.js", icon: "devicon-nextjs-plain colored" },
@@ -346,10 +342,10 @@ export const missions: Mission[] = [
       "E-commerce de véhicules en architecture découplée React + API Symfony, avec un assistant IA qui interprète les besoins en langage naturel.",
     image: "/img/photos/minia-vroom.png",
     techs: [
+      { label: "Symfony", icon: "devicon-symfony-plain colored" },
       { label: "Next.js", icon: "devicon-nextjs-plain colored" },
       { label: "TypeScript", icon: "devicon-typescript-plain colored" },
       { label: "React", icon: "devicon-react-plain colored" },
-      { label: "Symfony", icon: "devicon-symfony-plain colored" },
       { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
     ],
     links: [
