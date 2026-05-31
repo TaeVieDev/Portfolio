@@ -735,7 +735,7 @@ footer p {
   object-fit: cover;
   object-position: center 20%;
   /* Petit zoom-in pour resserrer le cadrage sur le sujet. */
-  transform: scale(1.05);
+  transform: scale(1.15);
   display: block;
 }
 
