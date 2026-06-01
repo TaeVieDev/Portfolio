@@ -55,10 +55,8 @@ export default function BentoHero({ id = "hero" }: { id?: string }) {
           <i className="devicon-react-plain colored" title="React" />
           <i className="devicon-nextjs-plain colored" title="Next.js" />
           <i className="devicon-symfony-original colored" title="Symfony" />
-          <i className="devicon-java-plain colored" title="Java" />
           <i className="devicon-php-plain colored" title="PHP" />
           <i className="devicon-postgresql-plain colored" title="PostgreSQL" />
-          <i className="devicon-mysql-plain colored" title="MySQL" />
           <i className="devicon-html5-plain colored" title="HTML5" />
           <i className="devicon-css3-plain colored" title="CSS3" />
         </div>
