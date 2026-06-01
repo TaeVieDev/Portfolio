@@ -42,7 +42,7 @@ export default function BentoHero({ id = "hero" }: { id?: string }) {
         </span>
         <span className="bento__label">Alternance</span>
         <h3>Coface</h3>
-        <p>Administrateur Systèmes IT</p>
+        <p>Application Support</p>
       </a>
 
       {/* Cellule 4 : Stack technique — clic = scroll vers #competences.
