@@ -65,6 +65,20 @@ export default function Home() {
           <SectionTitle>Mon parcours professionnel</SectionTitle>
           <div className="education-timeline">
             <div className="education-item">
+              <span className="year">2025 - en cours</span>
+              <span className="separator" />
+              <div className="education-details">
+                <strong>Application support niv.2</strong>
+                <span className="school">Coface</span>
+                <span className="job-location">Bois-Colombes • Alternance</span>
+                <ul className="job-tasks">
+                  <li>Gestion des identités et des accès aux applications métiers</li>
+                  <li>Support technique de niveau 2 pour les utilisateurs finaux</li>
+                  <li>Participation à des projets d'amélioration continue du workflow IAM</li>
+                </ul>
+              </div>
+            </div>
+            <div className="education-item">
               <span className="year">2019 - 2025</span>
               <span className="separator" />
               <div className="education-details">
@@ -90,20 +104,6 @@ export default function Home() {
                     Organisation d'événements : participation à la mise en place de projets
                     éducatifs et culturels
                   </li>
-                </ul>
-              </div>
-            </div>
-            <div className="education-item">
-              <span className="year">2025 - en cours</span>
-              <span className="separator" />
-              <div className="education-details">
-                <strong>Application support niv.2</strong>
-                <span className="school">Coface</span>
-                <span className="job-location">Bois-Colombes • Alternance</span>
-                <ul className="job-tasks">
-                  <li>Gestion des identités et des accès aux applications métiers</li>
-                  <li>Support technique de niveau 2 pour les utilisateurs finaux</li>
-                  <li>Participation à des projets d'amélioration continue du workflow IAM</li>
                 </ul>
               </div>
             </div>

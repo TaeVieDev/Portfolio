@@ -59,8 +59,7 @@ export const missions: Mission[] = [
   {
     slug: "serveur-apache",
     title: "Atelier — Serveur Apache",
-    description:
-      "Installer un serveur Apache sur Ubuntu pour héberger des sites web.",
+    description: "Installer un serveur Apache sur Ubuntu pour héberger des sites web.",
     image: "/img/photos/minia-apache.jpg",
     techs: [
       { label: "Linux", icon: "devicon-linux-plain colored" },
@@ -90,8 +89,7 @@ export const missions: Mission[] = [
   {
     slug: "gestion-parc-tickets",
     title: "Atelier — Gestion de tickets (GLPI / OCS)",
-    description:
-      "Manipuler le cycle de vie complet d'un ticket dans GLPI et le lier à OCS.",
+    description: "Manipuler le cycle de vie complet d'un ticket dans GLPI et le lier à OCS.",
     image: "/img/photos/minia-ocs-glpi.png",
     techs: [
       { label: "Linux", icon: "devicon-linux-plain colored" },
@@ -103,50 +101,48 @@ export const missions: Mission[] = [
     category: "formation",
     block: "support",
   },
-  {
-    slug: "windows-server-2019",
-    title: "Atelier — Windows Server 2019",
-    description:
-      "Installer Windows Server 2019 en VM et le configurer.",
-    image: "/img/photos/minia-winserver.jpg",
-    techs: [
-      { label: "Windows Server", icon: "devicon-windows8-plain colored" },
-      { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
-    ],
-    links: [{ label: "Documentation", href: "/pdf/doc-windowsserver.pdf" }],
-    category: "formation",
-    block: "support",
-  },
+  // {
+  //   slug: "windows-server-2019",
+  //   title: "Atelier — Windows Server 2019",
+  //   description: "Installer Windows Server 2019 en VM et le configurer.",
+  //   image: "/img/photos/minia-winserver.jpg",
+  //   techs: [
+  //     { label: "Windows Server", icon: "devicon-windows8-plain colored" },
+  //     { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
+  //   ],
+  //   links: [{ label: "Documentation", href: "/pdf/doc-windowsserver.pdf" }],
+  //   category: "formation",
+  //   block: "support",
+  // },
 
   // ─── Cybersécurité des services informatiques ───
   // Ordre pédagogique : LABO 1 → LABO 2, puis prépa DVWA → attaque DVWA, puis crypto.
   {
     slug: "verif-integrite",
     title: "Labo — Vérification d'intégrité",
-    description:
-      "Vérifier qu'un téléchargement n'a pas été altéré via SHA-256.",
+    description: "Vérifier qu'un téléchargement n'a pas été altéré via SHA-256.",
     image: "/img/photos/kali-linux1.png",
     techs: [
-      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" }, { label: "Powershell", icon: "devicon-powershell-plain colored" }
+      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
+      { label: "Powershell", icon: "devicon-powershell-plain colored" },
     ],
-    links: [{ label: "Documentation", href: "/pdf/doc-verif-integrite.pdf" },],
+    links: [{ label: "Documentation", href: "/pdf/doc-verif-integrite.pdf" }],
     category: "formation",
     block: "cyber",
   },
-  {
-    slug: "besoin-chiffrement",
-    title: "Labo — Besoin de chiffrement",
-    description:
-      "Démontrer pourquoi et comment chiffrer les communications.",
-    image: "/img/photos/kali-linux1.png",
-    techs: [
-      { label: "Linux", icon: "devicon-linux-plain colored" },
-      { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
-    ],
-    links: [{ label: "Documentation", href: "/pdf/doc-besoin-chiffrement.pdf" }],
-    category: "formation",
-    block: "cyber",
-  },
+  // {
+  //   slug: "besoin-chiffrement",
+  //   title: "Labo — Besoin de chiffrement",
+  //   description: "Démontrer pourquoi et comment chiffrer les communications.",
+  //   image: "/img/photos/kali-linux1.png",
+  //   techs: [
+  //     { label: "Linux", icon: "devicon-linux-plain colored" },
+  //     { label: "VMware", customIcon: "/img/icons/vmware-logo.svg" },
+  //   ],
+  //   links: [{ label: "Documentation", href: "/pdf/doc-besoin-chiffrement.pdf" }],
+  //   category: "formation",
+  //   block: "cyber",
+  // },
   {
     slug: "dvwa-deployment",
     title: "Labo — Déploiement DVWA",
@@ -166,30 +162,27 @@ export const missions: Mission[] = [
   {
     slug: "dvwa-bruteforce",
     title: "Labo — Force brute sur DVWA",
-    description:
-      "Mener une attaque par force brute de bout en bout sur DVWA.",
+    description: "Mener une attaque par force brute de bout en bout sur DVWA.",
     image: "/img/photos/dvwa.png",
-    techs: [
-      { label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" },
-    ],
+    techs: [{ label: "Kali Linux", customIcon: "/img/icons/logo-kali.png" }],
     links: [{ label: "Documentation", href: "/pdf/doc-bruteforce.pdf" }],
     category: "formation",
     block: "cyber",
   },
-  {
-    slug: "crypto-asymetrique",
-    title: "Labo — Cryptographie asymétrique",
-    description:
-      "Générer une paire de clés, chiffrer un message, puis signer et vérifier.",
-    image: "/img/photos/kali-linux1.png",
-    techs: [
-      { label: "Linux", icon: "devicon-linux-plain colored" },
-      { label: "openSSL", customIcon: "/img/icons/logo-openssl.png" },
-    ],
-    links: [{ label: "Documentation", href: "/pdf/doc-assymetriccryptography.pdf" }],
-    category: "formation",
-    block: "cyber",
-  },
+  // {
+  //   slug: "crypto-asymetrique",
+  //   title: "Labo — Cryptographie asymétrique",
+  //   description:
+  //     "Générer une paire de clés, chiffrer un message, puis signer et vérifier.",
+  //   image: "/img/photos/kali-linux1.png",
+  //   techs: [
+  //     { label: "Linux", icon: "devicon-linux-plain colored" },
+  //     { label: "openSSL", customIcon: "/img/icons/logo-openssl.png" },
+  //   ],
+  //   links: [{ label: "Documentation", href: "/pdf/doc-assymetriccryptography.pdf" }],
+  //   category: "formation",
+  //   block: "cyber",
+  // },
 
   // ─── Solution Logiciel et Application Métier (SLAM) ───
   {
@@ -206,8 +199,7 @@ export const missions: Mission[] = [
   {
     slug: "atelier-symfony-twig",
     title: "Atelier — Symfony & Twig",
-    description:
-      "Construire des vues dynamiques avec Twig dans Symfony.",
+    description: "Construire des vues dynamiques avec Twig dans Symfony.",
     image: "/img/photos/twig.png",
     techs: [
       { label: "PHP", icon: "devicon-php-plain colored" },
@@ -221,8 +213,7 @@ export const missions: Mission[] = [
   {
     slug: "atelier-mvc",
     title: "Atelier — Pattern MVC",
-    description:
-      "Comprendre le pattern MVC et ce qu'il apporte pour un projet web.",
+    description: "Comprendre le pattern MVC et ce qu'il apporte pour un projet web.",
     image: "/img/photos/minia-mvc.png",
     techs: [{ label: "PHP", icon: "devicon-php-plain colored" }],
     links: [{ label: "Documentation", href: "/pdf/doc-atelierMVC.pdf" }],
@@ -232,8 +223,7 @@ export const missions: Mission[] = [
   {
     slug: "tp-mysql",
     title: "TP — MySQL / MariaDB",
-    description:
-      "Tavail pratique pour s'approprier SQL autour d'un mini-blog.",
+    description: "Tavail pratique pour s'approprier SQL autour d'un mini-blog.",
     image: "/img/photos/minia-mysql.png",
     techs: [
       { label: "MySQL", icon: "devicon-mysql-plain colored" },
@@ -246,8 +236,7 @@ export const missions: Mission[] = [
   {
     slug: "tp-php",
     title: "TP — PHP fondamentaux",
-    description:
-      "Six exercices progressifs pour ancrer les bases du PHP côté serveur.",
+    description: "Six exercices progressifs pour ancrer les bases du PHP côté serveur.",
     image: "/img/photos/minia-php.jpeg",
     techs: [
       { label: "MySQL", icon: "devicon-mysql-plain colored" },
@@ -286,8 +275,7 @@ export const missions: Mission[] = [
   {
     slug: "portfolio",
     title: "Projet — Portfolio",
-    description:
-      "Portfolio développé pour porter ma soutenance E5.",
+    description: "Portfolio développé pour porter ma soutenance E5.",
     image: "/img/photos/minia-portfolio.png",
     techs: [
       { label: "React", icon: "devicon-react-plain colored" },
@@ -295,7 +283,9 @@ export const missions: Mission[] = [
       { label: "Vite", icon: "devicon-vite-plain colored" },
       { label: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
     ],
-    links: [{ label: "Github", href: "https://github.com/thomas-montout/portfolio" }, { label: "Live", href: "https://thomas-montout.vercel.app/" }
+    links: [
+      { label: "Github", href: "https://github.com/thomas-montout/portfolio" },
+      { label: "Live", href: "https://thomas-montout.vercel.app/" },
     ],
     category: "personnel",
   },
@@ -303,7 +293,7 @@ export const missions: Mission[] = [
     slug: "in-the-cave",
     title: "Projet — In the Cave",
     description:
-      "Transformer un exercice JavaScript freeCodeCamp en RPG textuel React / TypeScript pour monter en compétences.",
+      "Transformer un exercice JavaScript freeCodeCamp en RPG textuel React / TypeScript pour monter en compétences sur ces technologies.",
     image: "/img/photos/minia-inthecave.jpg",
     techs: [
       { label: "React", icon: "devicon-react-plain colored" },
@@ -315,15 +305,13 @@ export const missions: Mission[] = [
       { label: "Live", href: "https://in-the-cave-five.vercel.app/" },
       { label: "Github", href: "https://github.com/thomas-montout/In-the-cave" },
       { label: "Documentation", href: "/pdf/doc-inthecave.pdf" },
-
     ],
     category: "personnel",
   },
   {
     slug: "absolute-stream",
     title: "Projet — Absolute Stream",
-    description:
-      "Plateforme sociale type Letterboxd développée en équipe autour d'une API.",
+    description: "Plateforme sociale type Letterboxd développée en équipe autour d'une API.",
     image: "/img/photos/minia-absolutestream.png",
     techs: [
       { label: "Next.js", icon: "devicon-nextjs-plain colored" },
@@ -349,7 +337,6 @@ export const missions: Mission[] = [
     image: "/img/photos/minia-vroom.png",
     techs: [
       { label: "Symfony", icon: "devicon-symfony-plain colored" },
-      { label: "Next.js", icon: "devicon-nextjs-plain colored" },
       { label: "TypeScript", icon: "devicon-typescript-plain colored" },
       { label: "React", icon: "devicon-react-plain colored" },
       { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
@@ -371,14 +358,17 @@ export const missions: Mission[] = [
       { label: "JavaScript", icon: "devicon-javascript-plain colored" },
       { label: "Html", icon: "devicon-html5-plain colored" },
     ],
-    links: [{ label: "Live", href: "https://thomas-montout.github.io/pink-monster/" }, { label: "Github", href: "https://github.com/thomas-montout/pink-monster" }],
+    links: [
+      { label: "Live", href: "https://thomas-montout.github.io/pink-monster/" },
+      { label: "Github", href: "https://github.com/thomas-montout/pink-monster" },
+    ],
     category: "personnel",
   },
   {
     slug: "faire-part-mariage",
     title: "Projet — Faire-part de mariage",
     description:
-      "Site faire-part pour le mariage de ma mère, conçu comme un terrain d'expérimentation pur sur les animations et la mise en scène.",
+      "Site faire-part pour un mariage, conçu comme un terrain d'expérimentation pur sur les animations et la mise en scène.",
     image: "/img/photos/minia-fairepart.png",
     techs: [
       { label: "Vite", icon: "devicon-vite-plain colored" },
@@ -392,16 +382,19 @@ export const missions: Mission[] = [
     slug: "tempo",
     title: "Projet — Tempo",
     description:
-      "App météo qui change complètement de skin — couleurs, fond, micro-animations — selon les conditions retournées par une API publique.",
+      "App météo qui change complètement de skin selon les conditions retournées par une API publique.",
     image: "/img/photos/minia-tempo.png",
     techs: [
       { label: "React", icon: "devicon-react-plain colored" },
       { label: "TypeScript", icon: "devicon-typescript-plain colored" },
       { label: "Vite", icon: "devicon-vite-plain colored" },
     ],
-    links: [{ label: "Live", href: "https://tempo-ten-psi.vercel.app/"}, { label: "Github", href: "https://github.com/thomas-montout/tempo"} ],
+    links: [
+      { label: "Live", href: "https://tempo-ten-psi.vercel.app/" },
+      { label: "Github", href: "https://github.com/thomas-montout/tempo" },
+    ],
     category: "personnel",
-  }
+  },
 ];
 // ════════════════════════════════════════════════════════════════════
 // HELPERS — évitent de répéter les filtres dans les composants.
